@@ -28,7 +28,10 @@ function User() {
         <strong>User Id</strong> {userId}
       </li>
       <li>
-        <strong>Username</strong> {user.username}
+        <strong>First name</strong> {user.first_name}
+      </li>
+      <li>
+        <strong>Last name</strong> {user.last_name}
       </li>
       <li>
         <strong>Email</strong> {user.email}
