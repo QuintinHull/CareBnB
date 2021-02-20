@@ -1,7 +1,7 @@
 from .db import db
 
 
-class Spot(db.Model, UserMixin):
+class Spot(db.Model):
     __tablename__ = 'spots'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -26,11 +26,11 @@ class Spot(db.Model, UserMixin):
             "id": self.id,
             "image_url": self.image_url,
             "title": self.title,
-            "address": self.address
-            "city": self.city
-            "state": self.state
-            "description": self.description
-            "capacity": self.capacity
-            "availability": self.availability
+            "address": self.address,
+            "city": self.city,
+            "state": self.state,
+            "description": self.description,
+            "capacity": self.capacity,
+            "availability": self.availability,
             "host_id": self.host_id
         }
