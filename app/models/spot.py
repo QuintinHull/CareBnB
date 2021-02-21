@@ -15,11 +15,7 @@ class Spot(db.Model):
     availability = db.Column(db.Integer, nullable=False)
     host_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    host = db.relationship("User", back_populates="spots")
-
-    @property
-    def title(self):
-        return self.title
+    host = db.relationship("User")
 
     def to_dict(self):
         return {
