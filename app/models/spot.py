@@ -18,6 +18,7 @@ class Spot(db.Model):
 
     host = db.relationship("User")
     booking = db.relationship("User_Book_Spot")
+    funds = db.relationship("Funding")
 
     def to_dict(self):
         return {
