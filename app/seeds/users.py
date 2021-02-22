@@ -6,19 +6,19 @@ from app.models import db, User
 
 def seed_users():
 
-    demo = User(id=1, first_name='Demo', last_name='User', email='demo@aa.io',
+    demo = User(first_name='Demo', last_name='User', email='demo@aa.io',
                 password='password')
 
-    gen = User(id=2, first_name='Gen', last_name='Ohta', email='gen@aa.com',
+    gen = User(first_name='Gen', last_name='Ohta', email='gen@aa.com',
                password='genpw')
 
-    juliet = User(id=3, first_name='Juliet', last_name='Shafto', email='juliet@aa.com',
+    juliet = User(first_name='Juliet', last_name='Shafto', email='juliet@aa.com',
                   password='julietpw')
 
-    alfredo = User(id=4, first_name='Alfredo', last_name='Quiroga', email='alfredo@aa.com',
+    alfredo = User(first_name='Alfredo', last_name='Quiroga', email='alfredo@aa.com',
                    password='alfredopw')
 
-    ed = User(id=5, first_name='Ed', last_name='Herman', email='ed@aa.com',
+    ed = User(first_name='Ed', last_name='Herman', email='ed@aa.com',
               password='edpw')
 
     db.session.add(demo)
@@ -36,5 +36,5 @@ def seed_users():
 
 
 def undo_users():
-    User.query.delete()
+    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
     db.session.commit()
