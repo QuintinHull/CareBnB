@@ -2,7 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux"
 import thunk from "redux-thunk"
 import spotReducer from "./spot"
 
-const rooReducer = combineReducers({
+const rootReducer = combineReducers({
     spots: spotReducer
 })
 
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const configureStore = (preloadedState) => {
-  return createStore(rootReducer, preloadedState, enhancer);
+    return createStore(rootReducer, preloadedState, enhancer);
 };
 
 export default configureStore;
