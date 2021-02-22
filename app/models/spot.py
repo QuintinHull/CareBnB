@@ -17,8 +17,9 @@ class Spot(db.Model):
     host_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     host = db.relationship("User")
-    booking = db.relationship("User_Book_Spot")
-    funds = db.relationship("Funding")
+    booking = db.relationship(
+        "User_Book_Spot", cascade="all, delete", backref="spots")
+    funds = db.relationship("Funding", cascade="all, delete", backref="spots")
 
     def to_dict(self):
         return {

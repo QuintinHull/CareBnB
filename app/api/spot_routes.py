@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import current_user
-from app.models import Spot
+from app.models import db, Spot
 from app.forms import SpotForm
 
 spot_routes = Blueprint('spots', __name__)
@@ -19,21 +19,29 @@ def create_spot():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         spot = Spot(
-            image_url = form.data['image_url'],
-            title = form.data['title'],
-            address = form.data['address'],
-            city = form.data['city'],
-            state = form.data['state'],
-            zipcode = form.data['zipcode'],
-            description = form.data['description'],
-            capacity = form.data['capacity'],
-            availability = form.data['availability'],
-            host_id = current_user.id
+            image_url=form.data['image_url'],
+            title=form.data['title'],
+            address=form.data['address'],
+            city=form.data['city'],
+            state=form.data['state'],
+            zipcode=form.data['zipcode'],
+            description=form.data['description'],
+            capacity=form.data['capacity'],
+            availability=form.data['availability'],
+            host_id=current_user.id
         )
         db.session.add(spot)
         db.session.commit()
         return {"spot": {spot.id: spot.to_dict()}}
     return {"errors": "set errors here"}
+
+
+@spot_routes.route('/<id>', methods=["DELETE"])
+def delete_spot(id):
+    spot = Spot.query.filter(Spot.id == id).first()
+    db.session.delete(spot)
+    db.session.commit()
+    return {'deleted': True}
 
 
 @spot_routes.route('/<id>')
