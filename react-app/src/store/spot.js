@@ -1,4 +1,5 @@
 const LOAD = "spot/getAllSpots"
+const LOAD_ONE = "spot/getOneSpot"
 const CREATE_SPOT = "spot/createNewSpot"
 const DELETE_SPOT = "spot/deleteASpot"
 
@@ -23,10 +24,24 @@ const deleteASpot = (spot) => {
     }
 }
 
+const getOneSpot = (spot) => {
+    return {
+        type:LOAD_ONE,
+        payload: spot
+    }
+}
+
 export const getSpots = () => async dispatch => {
     const response = await fetch('/api/spots/');
     const spots = await response.json()
     return dispatch(getAllSpots(spots));
+}
+
+export const getSpot = (id) => async dispatch => {
+    const response = await fetch(`/api/spots/${id}`);
+    const spot = await response.json()
+    dispatch(getOneSpot(spot))
+    return spot
 }
 
 export const createSpot = ({ image_url, title, address, city,
@@ -70,6 +85,9 @@ const spotReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             newState = Object.assign({}, state, { ...action.payload })
+            return newState
+        case LOAD_ONE:
+            newState = Object.assign({}, state, { ...action.payload})
             return newState
         case CREATE_SPOT:
             const new_spot = action.payload.spot
