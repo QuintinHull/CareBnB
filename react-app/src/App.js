@@ -10,6 +10,13 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import configureStore from './store';
 
+
+import HomePage from "./components/HomePageComponent"
+import SpotPage from "./components/SpotComponent/SpotPage"
+import BookingPageComponent from "./components/BookingPageComponent"
+import SearchPage from "./components/SearchComponent/SearchPage"
+
+
 const store = configureStore();
 
 function App() {
@@ -50,9 +57,27 @@ function App() {
           <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
             <User />
           </ProtectedRoute>
+
+          {/* Home Page: */}
           <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
-            <h1>My Home Page</h1>
+            <HomePage />
           </ProtectedRoute>
+
+          {/* Spot Page */}
+          <ProtectedRoute path="/spot/:spotId" exact authenticated={authenticated} >
+            <SpotPage />
+          </ProtectedRoute>
+
+          {/* Booking Page */}
+          <ProtectedRoute path="/spot/book/:spotId" authenticated={authenticated}>
+            <BookingPageComponent />
+          </ProtectedRoute>
+
+          {/* Search Page */}
+          <ProtectedRoute path="/locate" authenticated={authenticated}>
+            <SearchPage />
+          </ProtectedRoute>
+
         </Switch>
       </BrowserRouter>
     </ReduxProvider>
