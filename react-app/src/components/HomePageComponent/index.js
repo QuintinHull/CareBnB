@@ -1,6 +1,6 @@
 import React from "react"
 import './home-page.css'
-
+import SearchBar from '../SearchComponent/SearchBar'
 // const test = async () => {
 //     const response = await fetch('/api/spots/top-available');
 //     const spots = await response.json();
@@ -12,7 +12,7 @@ const HomePageComponent = () => {
         <div className='home-body'>
             <div className='welcome-search-container'>
                 <div className='home-search-bar-container'>
-                    <h4>Search Bar Component with background image</h4>
+                    <SearchBar />
                 </div>
             </div>
             <div className='newest-spots-container'>

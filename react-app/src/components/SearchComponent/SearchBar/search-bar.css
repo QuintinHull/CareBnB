@@ -1,0 +1,41 @@
+#search-input-field {
+    width: 300px;
+    height: 20px;
+    font-size: 20px;
+}
+
+#guest-input-field {
+    width: 200px;
+    height: 20px;
+    font-size: 20px;
+}
+
+
+.search-input-container p {
+    margin: 0;
+}
+
+.search-input-container {
+    display: flex;
+    flex-direction: column;
+
+    margin: 0px 20px;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: relative;
+    z-index: 1;
+
+    background-color: lightgray;
+
+
+    width: 800px;
+    height: 30px;
+    padding: 20px;
+    border-radius: 2.5em;
+}
