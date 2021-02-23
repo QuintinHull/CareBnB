@@ -41,7 +41,7 @@ def delete_spot(id):
     spot = Spot.query.filter(Spot.id == id).first()
     db.session.delete(spot)
     db.session.commit()
-    return {'deleted': True}
+    return {'spot': spot.to_dict()}
 
 
 @spot_routes.route('/<id>')

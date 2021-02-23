@@ -1,4 +1,6 @@
 const LOAD = "spot/getAllSpots"
+const CREATE_SPOT = "spot/createNewSpot"
+const DELETE_SPOT = "spot/deleteASpot"
 
 const getAllSpots = (spots) => {
     return {
@@ -7,11 +9,58 @@ const getAllSpots = (spots) => {
     }
 }
 
+const createNewSpot = (spot) => {
+    return {
+        type: CREATE_SPOT,
+        payload: spot
+    }
+}
+
+const deleteASpot = (spot) => {
+    return {
+        type: DELETE_SPOT,
+        payload: spot
+    }
+}
+
 export const getSpots = () => async dispatch => {
     const response = await fetch('/api/spots/');
-    console.log(response)
     const spots = await response.json()
     return dispatch(getAllSpots(spots));
+}
+
+export const createSpot = ({ image_url, title, address, city,
+    state, zipcode, description, capacity, availability }) => async dispatch => {
+        const response = await fetch('/api/spots/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                image_url,
+                title,
+                address,
+                city,
+                state,
+                zipcode,
+                description,
+                capacity,
+                availability
+            })
+        });
+        const spot = await response.json();
+        return dispatch(createNewSpot(spot))
+    }
+
+export const deleteSpot = ({ spotId }) => async dispatch => {
+    const response = await fetch(`/api/spots/${spotId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const spot = await response.json()
+    return dispatch(deleteASpot(spot))
 }
 
 const initialState = {}
@@ -21,6 +70,16 @@ const spotReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD:
             newState = Object.assign({}, state, { ...action.payload })
+            return newState
+        case CREATE_SPOT:
+            const new_spot = action.payload.spot
+            const all_spots = state.all_spots
+            newState = { all_spots: { ...all_spots, ...new_spot } }
+            return newState
+        case DELETE_SPOT:
+            const deleted_spot = action.payload.spot
+            newState = Object.assign({}, state)
+            delete newState.all_spots[deleted_spot.id]
             return newState
         default:
             return state
