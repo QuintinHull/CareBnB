@@ -22,7 +22,7 @@ export const getBookings = () => async (dispatch) => {
 };
 
 export const addBooking = (payload) => async (dispatch) => {
-  const response = await fetch("/api/bookings/", {
+  const response = await fetch(`/api/bookings/${payload.spotId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
