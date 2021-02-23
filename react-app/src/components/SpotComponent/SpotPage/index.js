@@ -27,6 +27,8 @@ const SpotPage = () => {
                         <h3>{spotSelector.spot.city}, {spotSelector.spot.state}</h3>
                         <img src={spotSelector.spot.image_url} alt="Spot Image"/>
                         <h4>{spotSelector.spot.description}</h4>
+                        <h4>Max Capacity: {spotSelector.spot.capacity}</h4>
+                        <h4>Current Availability: {spotSelector.spot.availability}</h4>
                     </>
                 )}
             </div>
