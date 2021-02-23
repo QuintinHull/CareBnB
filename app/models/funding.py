@@ -11,3 +11,11 @@ class Funding(db.Model):
 
     sponsor = db.relationship("User")
     spot = db.relationship("Spot")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'sponsor': self.sponsor.to_dict(),
+            'spot': self.spot.to_dict(),
+            'sponsorship_cost': self.sponsorship_cost
+        }

@@ -14,7 +14,7 @@ class User(db.Model, UserMixin):
 
     spots = db.relationship("Spot")
     booked_spot = db.relationship("User_Book_Spot", backref="users")
-    donations = db.relationship("Funding")
+    donations = db.relationship("Funding", backref="users")
 
     @property
     def password(self):
