@@ -1,3 +1,49 @@
+.home-body {
+    display: flex;
+    flex-direction: column;
+}
+
 .welcome-search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightsteelblue;
+    height: 600px;
+}
+
+.newest-spots-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: lightslategrey;
+    height: 350px;
+}
+
+.mission-container {
+    display: grid;
+    grid-template-columns: 70% 30%;
     background-color: lightgray;
+    height: 200px;
+}
+
+.mission-statement-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lightsteelblue;
+}
+
+.amount-sheltered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.google-maps-container {
+    height: 500px;
+    background-color: lightslategrey;
 }

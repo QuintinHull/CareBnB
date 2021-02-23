@@ -48,3 +48,9 @@ def delete_spot(id):
 def single_spot(id):
     spot = Spot.query.get(id)
     return {'spot': spot.to_dict()}
+
+
+@spot_routes.route('/top-available')
+def available_spots():
+    spots = Spot.query.order_by(Spot.availability.desc()).limit(10)
+    return {'spots': [spot.to_dict() for spot in spots]}
