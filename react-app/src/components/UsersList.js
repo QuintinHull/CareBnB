@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
-import { createSpot, getSpots } from "../store/spot";
+import { createSpot, deleteSpot, getSpots } from "../store/spot";
 function UsersList() {
   const dispatch = useDispatch()
   const [users, setUsers] = useState([]);
@@ -20,28 +20,31 @@ function UsersList() {
   }, [dispatch])
 
   const testFunc = () => {
-    const image_url = 'www.test.com'
-    const title = 'Test 3spot title'
-    const address = 'Test 3spot address'
-    const city = 'Test 3city'
-    const state = 'TX'
-    const zipcode = 76107
-    const description = 'Test 3description'
-    const capacity = 400
-    const availability = 400
+    // const image_url = 'www.test.com'
+    // const title = 'Test 3spot title'
+    // const address = 'Test 3spot address'
+    // const city = 'Test 3city'
+    // const state = 'TX'
+    // const zipcode = 76107
+    // const description = 'Test 3description'
+    // const capacity = 400
+    // const availability = 400
 
-    const payload = {
-      image_url,
-      title,
-      address,
-      city,
-      state,
-      zipcode,
-      description,
-      capacity,
-      availability,
-    }
-    dispatch(createSpot(payload))
+    // const payload = {
+    //   image_url,
+    //   title,
+    //   address,
+    //   city,
+    //   state,
+    //   zipcode,
+    //   description,
+    //   capacity,
+    //   availability,
+    // }
+    // dispatch(createSpot(payload))
+
+
+    // dispatch(deleteSpot({ spotId: 14 }))
   }
 
   const userComponents = users.map((user) => {

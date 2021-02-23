@@ -1,6 +1,6 @@
 const LOAD = "spot/getAllSpots"
 const CREATE_SPOT = "spot/createNewSpot"
-
+const DELETE_SPOT = "spot/deleteASpot"
 const getAllSpots = (spots) => {
     return {
         type: LOAD,
@@ -11,6 +11,13 @@ const getAllSpots = (spots) => {
 const createNewSpot = (spot) => {
     return {
         type: CREATE_SPOT,
+        payload: spot
+    }
+}
+
+const deleteASpot = (spot) => {
+    return {
+        type: DELETE_SPOT,
         payload: spot
     }
 }
@@ -44,6 +51,17 @@ export const createSpot = ({ image_url, title, address, city,
         return dispatch(createNewSpot(spot))
     }
 
+export const deleteSpot = ({ spotId }) => async dispatch => {
+    const response = await fetch(`/api/spots/${spotId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const spot = await response.json()
+    return dispatch(deleteASpot(spot))
+}
+
 const initialState = {}
 
 const spotReducer = (state = initialState, action) => {
@@ -56,6 +74,11 @@ const spotReducer = (state = initialState, action) => {
             const new_spot = action.payload.spot
             const all_spots = state.all_spots
             newState = { all_spots: { ...all_spots, ...new_spot } }
+            return newState
+        case DELETE_SPOT:
+            const deleted_spot = action.payload.spot
+            newState = Object.assign({}, state)
+            delete newState.all_spots[action.payload.spot.id]
             return newState
         default:
             return state
