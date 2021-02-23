@@ -37,7 +37,7 @@ export const getFunding = (id) => async (dispatch) => {
   return dispatch(getOneFunding(funding));
 };
 
-export const addFunding = () => async (dispatch) => {
+export const addFunding = (payload) => async (dispatch) => {
   const response = await fetch("api/fundings/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
