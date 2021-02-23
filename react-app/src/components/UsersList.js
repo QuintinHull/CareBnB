@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { createSpot, deleteSpot, getSpots } from "../store/spot";
+
 function UsersList() {
+  const dispatch = useDispatch()
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -12,6 +16,39 @@ function UsersList() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    dispatch(getSpots())
+  }, [dispatch])
+
+  // import + dispatch any thunk action in here to debug/test
+  const testFunc = () => {
+    // const image_url = 'www.test.com'
+    // const title = 'Test 3spot title'
+    // const address = 'Test 3spot address'
+    // const city = 'Test 3city'
+    // const state = 'TX'
+    // const zipcode = 76107
+    // const description = 'Test 3description'
+    // const capacity = 400
+    // const availability = 400
+
+    // const payload = {
+    //   image_url,
+    //   title,
+    //   address,
+    //   city,
+    //   state,
+    //   zipcode,
+    //   description,
+    //   capacity,
+    //   availability,
+    // }
+    // dispatch(createSpot(payload))
+
+    dispatch(deleteSpot({ spotId: 4 }))
+
+  }
+
   const userComponents = users.map((user) => {
     return (
       <li key={user.id}>
@@ -22,6 +59,8 @@ function UsersList() {
 
   return (
     <>
+      {/* button below is for testing our redux store */}
+      <button onClick={testFunc}>Test</button>
       <h1>User List: </h1>
       <ul>{userComponents}</ul>
     </>
