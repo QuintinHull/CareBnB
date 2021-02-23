@@ -1,6 +1,7 @@
 const LOAD = "spot/getAllSpots"
 const CREATE_SPOT = "spot/createNewSpot"
 const DELETE_SPOT = "spot/deleteASpot"
+
 const getAllSpots = (spots) => {
     return {
         type: LOAD,
@@ -78,7 +79,7 @@ const spotReducer = (state = initialState, action) => {
         case DELETE_SPOT:
             const deleted_spot = action.payload.spot
             newState = Object.assign({}, state)
-            delete newState.all_spots[action.payload.spot.id]
+            delete newState.all_spots[deleted_spot.id]
             return newState
         default:
             return state

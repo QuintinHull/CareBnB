@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { createSpot, deleteSpot, getSpots } from "../store/spot";
+
 function UsersList() {
   const dispatch = useDispatch()
   const [users, setUsers] = useState([]);
@@ -19,6 +20,7 @@ function UsersList() {
     dispatch(getSpots())
   }, [dispatch])
 
+  // import + dispatch any thunk action in here to debug/test
   const testFunc = () => {
     // const image_url = 'www.test.com'
     // const title = 'Test 3spot title'
@@ -43,8 +45,8 @@ function UsersList() {
     // }
     // dispatch(createSpot(payload))
 
+    dispatch(deleteSpot({ spotId: 4 }))
 
-    // dispatch(deleteSpot({ spotId: 14 }))
   }
 
   const userComponents = users.map((user) => {
@@ -57,6 +59,7 @@ function UsersList() {
 
   return (
     <>
+      {/* button below is for testing our redux store */}
       <button onClick={testFunc}>Test</button>
       <h1>User List: </h1>
       <ul>{userComponents}</ul>
