@@ -1,36 +1,56 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { PersonCircle, Search } from 'react-bootstrap-icons';
 
 const NavBar = ({ setAuthenticated }) => {
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/sign-up" exact={true} activeClassName="active">
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton setAuthenticated={setAuthenticated} />
-        </li>
-      </ul>
-    </nav>
+    <Navbar style={{height: 90}} bg="light" variant="light" sticky="top" className="justify-content-between">
+      <Nav className="w-30 p-0">
+        <Navbar.Brand href="#home">CareBnB</Navbar.Brand>
+      </Nav>
+      <Nav className="w-30 p-0">
+        <Form className="blank" inline>
+          <FormControl type="text" placeholder=' Search' className="w-30 p-0" />
+          <Search size={30} />
+        </Form>
+      </Nav>
+      <Nav className="w-30 p-0">
+        <Nav className="my-auto mr-3">
+          <NavLink to="/spot">Host a Spot</NavLink>
+        </Nav>
+        <NavDropdown title={<PersonCircle size={30} />} id="basic-nav-dropdown" className="dropleft">
+          <NavDropdown.Item>
+            <NavLink to="/" exact={true} activeClassName="active">
+              Home
+            </NavLink>
+          </NavDropdown.Item>
+          <NavDropdown.Item>
+            <NavLink to="/login" exact={true} activeClassName="active">
+              Login
+            </NavLink>
+          </NavDropdown.Item>
+          <NavDropdown.Item>
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
+              Sign Up
+            </NavLink>
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item>
+            <NavLink to="/users" exact={true} activeClassName="active">
+              Users
+            </NavLink>
+          </NavDropdown.Item>
+          <NavDropdown.Item>
+            <LogoutButton setAuthenticated={setAuthenticated} />
+          </NavDropdown.Item>
+        </NavDropdown>
+      </Nav>
+      
+    </Navbar>
+
   );
 }
 
