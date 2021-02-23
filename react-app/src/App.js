@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { Provider as ReduxProvider } from 'react-redux';
+import { Provider as ReduxProvider } from "react-redux";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
@@ -8,14 +8,13 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
-import configureStore from './store';
+import configureStore from "./store";
 
-
-import HomePage from "./components/HomePageComponent"
-import SpotPage from "./components/SpotComponent/SpotPage"
-import BookingPageComponent from "./components/BookingPageComponent"
-import SearchPage from "./components/SearchComponent/SearchPage"
-
+import HomePage from "./components/HomePageComponent";
+import SpotPage from "./components/SpotComponent/SpotPage";
+import BookingPageComponent from "./components/BookingPageComponent";
+import SearchPage from "./components/SearchComponent/SearchPage";
+import SpotCreate from "./components/SpotComponent/SpotCreate";
 
 const store = configureStore();
 
@@ -49,12 +48,23 @@ function App() {
             />
           </Route>
           <Route path="/sign-up" exact={true}>
-            <SignUpForm authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <SignUpForm
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
           </Route>
-          <ProtectedRoute path="/users" exact={true} authenticated={authenticated}>
+          <ProtectedRoute
+            path="/users"
+            exact={true}
+            authenticated={authenticated}
+          >
             <UsersList />
           </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
+          <ProtectedRoute
+            path="/users/:userId"
+            exact={true}
+            authenticated={authenticated}
+          >
             <User />
           </ProtectedRoute>
 
@@ -63,25 +73,44 @@ function App() {
             <HomePage />
           </ProtectedRoute>
 
+          {/* testing spot create */}
+          <ProtectedRoute
+            path="/spot/create/"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <SpotCreate />
+          </ProtectedRoute>
+
           {/* Spot Page */}
-          <ProtectedRoute path="/spot/:spotId" exact authenticated={authenticated} >
+          <ProtectedRoute
+            path="/spot/:spotId"
+            exact={true}
+            authenticated={authenticated}
+          >
             <SpotPage />
           </ProtectedRoute>
 
           {/* Booking Page */}
-          <ProtectedRoute path="/spot/book/:spotId" authenticated={authenticated}>
+          <ProtectedRoute
+            path="/spot/book/:spotId"
+            exact={true}
+            authenticated={authenticated}
+          >
             <BookingPageComponent />
           </ProtectedRoute>
 
           {/* Search Page */}
-          <ProtectedRoute path="/locate" authenticated={authenticated}>
+          <ProtectedRoute
+            path="/locate"
+            exact={true}
+            authenticated={authenticated}
+          >
             <SearchPage />
           </ProtectedRoute>
-
         </Switch>
       </BrowserRouter>
     </ReduxProvider>
-
   );
 }
 
