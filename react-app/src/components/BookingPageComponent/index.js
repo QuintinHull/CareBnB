@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
 import * as bookingActions from "../../store/booking";
 
 const BookingPageComponent = ({ authenticated }) => {
@@ -45,6 +44,7 @@ const BookingPageComponent = ({ authenticated }) => {
       <div>
         <button type="submit">Book!</button>
       </div>
+
     </form>
   );
 };
