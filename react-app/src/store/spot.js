@@ -1,3 +1,4 @@
+
 const LOAD = "spot/getAllSpots"
 const LOAD_ONE = "spot/getOneSpot"
 const LOAD_AVAILABLE = "spot/getAvailableSpots"
@@ -5,12 +6,14 @@ const CREATE_SPOT = "spot/createNewSpot"
 const DELETE_SPOT = "spot/deleteASpot"
 
 
+
+
 const getAllSpots = (spots) => {
-    return {
-        type: LOAD,
-        payload: spots
-    }
-}
+  return {
+    type: LOAD,
+    payload: spots,
+  };
+};
 
 const getAvailableSpots = (spots) => {
     return {
@@ -20,72 +23,84 @@ const getAvailableSpots = (spots) => {
 }
 
 const createNewSpot = (spot) => {
-    return {
-        type: CREATE_SPOT,
-        payload: spot
-    }
-}
+  return {
+    type: CREATE_SPOT,
+    payload: spot,
+  };
+};
 
 const deleteASpot = (spot) => {
-    return {
-        type: DELETE_SPOT,
-        payload: spot
-    }
-}
+  return {
+    type: DELETE_SPOT,
+    payload: spot,
+  };
+};
 
 const getOneSpot = (spot) => {
-    return {
-        type: LOAD_ONE,
-        payload: spot
-    }
-}
+  return {
+    type: LOAD_ONE,
+    payload: spot,
+  };
+};
 
-export const getSpots = () => async dispatch => {
-    const response = await fetch('/api/spots/');
-    const spots = await response.json()
-    return dispatch(getAllSpots(spots));
-}
 
-export const getSpot = (id) => async dispatch => {
-    const response = await fetch(`/api/spots/${id}`);
-    const spot = await response.json()
-    dispatch(getOneSpot(spot))
-    return spot
-}
+export const getSpots = () => async (dispatch) => {
+  const response = await fetch("/api/spots/");
+  const spots = await response.json();
+  return dispatch(getAllSpots(spots));
+};
 
-export const createSpot = ({ image_url, title, address, city,
-    state, zipcode, description, capacity, availability }) => async dispatch => {
-        const response = await fetch('/api/spots/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                image_url,
-                title,
-                address,
-                city,
-                state,
-                zipcode,
-                description,
-                capacity,
-                availability
-            })
-        });
-        const spot = await response.json();
-        return dispatch(createNewSpot(spot))
-    }
+export const getSpot = (id) => async (dispatch) => {
+  const response = await fetch(`/api/spots/${id}`);
+  const spot = await response.json();
+  dispatch(getOneSpot(spot));
+  return spot;
+};
 
-export const deleteSpot = ({ spotId }) => async dispatch => {
-    const response = await fetch(`/api/spots/${spotId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-    const spot = await response.json()
-    return dispatch(deleteASpot(spot))
-}
+export const createSpot = ({
+  image_url,
+  title,
+  address,
+  city,
+  state,
+  zipcode,
+  description,
+  capacity,
+  availability,
+}) => async (dispatch) => {
+  const response = await fetch("/api/spots/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      image_url,
+      title,
+      address,
+      city,
+      state,
+      zipcode,
+      description,
+      capacity,
+      availability,
+    }),
+  });
+  const spot = await response.json();
+  dispatch(createNewSpot(spot));
+  return spot;
+};
+
+export const deleteSpot = ({ spotId }) => async (dispatch) => {
+  const response = await fetch(`/api/spots/${spotId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const spot = await response.json();
+  return dispatch(deleteASpot(spot));
+};
+
 
 export const getTopAvailableSpots = () => async dispatch => {
     const response = await fetch('/api/spots/top-available');
@@ -122,4 +137,5 @@ const spotReducer = (state = initialState, action) => {
     }
 }
 
-export default spotReducer
+
+export default spotReducer;

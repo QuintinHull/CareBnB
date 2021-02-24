@@ -1,0 +1,5 @@
+.spot-create-zipcode::-webkit-inner-spin-button,
+.spot-create-zipcode::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

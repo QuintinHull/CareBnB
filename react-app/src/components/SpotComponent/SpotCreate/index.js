@@ -3,20 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSpot } from "../../../store/spot";
 import { useHistory } from "react-router-dom";
 
+import "./SpotCreate.css";
+
 const SpotCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const createdSpot = useSelector((state) => state.spot);
-
-  const [imageUrl, setImageUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [description, setDescription] = useState("");
-  const [capacity, setCapacity] = useState("");
-  const [availability, setAvailability] = useState("");
+  const createdSpot = useSelector((state) => state.spots.all_spots);
 
   const states = [
     "AL",
@@ -71,6 +63,15 @@ const SpotCreate = () => {
     "WY",
   ];
 
+  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState(states[0]);
+  const [zipcode, setZipcode] = useState("");
+  const [description, setDescription] = useState("");
+  const [capacity, setCapacity] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newSpot = {
@@ -82,13 +83,11 @@ const SpotCreate = () => {
       zipcode,
       description,
       capacity,
-      availability,
     };
-    await dispatch(createSpot(newSpot));
-    if (createdSpot) {
-      console.log(createdSpot);
-      history.push(`/spot/${createdSpot.id}`);
-    }
+    let addedSpot = await dispatch(createSpot(newSpot));
+
+    console.log("----->", addedSpot);
+    history.push(`/spot/${addedSpot.spot.id}`);
   };
 
   return (
@@ -142,6 +141,7 @@ const SpotCreate = () => {
         <div>
           <label>Zip Code: </label>
           <input
+            className="spot-create-zipcode"
             type="number"
             value={zipcode}
             onChange={(e) => setZipcode(e.target.value)}
@@ -159,16 +159,9 @@ const SpotCreate = () => {
           <label>Capacity: </label>
           <input
             type="number"
+            min="1"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label>Availability: </label>
-          <input
-            type="number"
-            value={availability}
-            onChange={(e) => setAvailability(e.target.value)}
           ></input>
         </div>
         <button type="submit">Submit: </button>
