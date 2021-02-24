@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from app.models import db, Spot
 from app.forms import SpotForm
+from sqlalchemy import and_
 
 spot_routes = Blueprint('spots', __name__)
 
@@ -54,3 +55,10 @@ def single_spot(id):
 def available_spots():
     spots = Spot.query.order_by(Spot.availability.desc()).limit(10)
     return {'available_spots': [spot.to_dict() for spot in spots]}
+
+
+@spot_routes.route('/search/<guest_size>&<city>')
+def search_spots(guest_size, city):
+    spots = Spot.query.filter(
+        and_(Spot.city.like(f'{city}%'), Spot.availability > guest_size))
+    return {'searched_spots': [spot.to_dict() for spot in spots]}
