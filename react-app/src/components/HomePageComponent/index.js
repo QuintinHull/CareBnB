@@ -1,22 +1,27 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import Geolocation from '@react-native-community/geolocation';
 import { getTopAvailableSpots } from "../../store/spot"
 import SearchBar from '../SearchComponent/SearchBar'
 import SpotViewLarge from '../SpotComponent/SpotViewLarge'
 
 import './home-page.css'
-// const test = async () => {
-//     const response = await fetch('/api/spots/top-available');
-//     const spots = await response.json();
-//     console.log(spots)
-// }
-
 
 
 const HomePageComponent = () => {
     const dispatch = useDispatch()
 
+    const [location, setLocation] = useState({})
+
     const available_spots = useSelector(state => state.spots.available_spots)
+
+    useEffect(() => {
+        Geolocation.getCurrentPosition(position => {
+            const initialPosition = JSON.stringify(position);
+            console.log(initialPosition)
+        }, error => alert(JSON.stringify(error)), { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 })
+    }, [])
+    useEffect(() => console.log(JSON.stringify(location)), [location])
 
     useEffect(() => {
         dispatch(getTopAvailableSpots())
@@ -24,15 +29,17 @@ const HomePageComponent = () => {
 
     return (
         <div className='home-body'>
-            <div className='welcome-search-container'>
-                {/* <div className='home-search-bar-container'> */}
-                <img src='https://img.gtsstatic.net/reno/imagereader.aspx?imageurl=https%3A%2F%2Fsir.azureedge.net%2F1103i215%2Fnxq8pmpbs8dwmpeg75kk15z4f1i215&option=N&idlisting=listingmedia&w=1600&permitphotoenlargement=false&fallbackimageurl=https%3A%2F%2Fstatic-sir-pacific-production-4.gtsstatic.net%2Fresources%2F_responsive%2Fimages%2Fcommon%2Fnophoto%2Flisting.jpg' alt='' id='welcome-image'></img>
+            <div className='home-search'>
+
                 <SearchBar />
-                {/* </div> */}
+            </div>
+            <div className='welcome-search-container'>
+                <img src='https://img.gtsstatic.net/reno/imagereader.aspx?imageurl=https%3A%2F%2Fsir.azureedge.net%2F1103i215%2Fnxq8pmpbs8dwmpeg75kk15z4f1i215&option=N&idlisting=listingmedia&w=1600&permitphotoenlargement=false&fallbackimageurl=https%3A%2F%2Fstatic-sir-pacific-production-4.gtsstatic.net%2Fresources%2F_responsive%2Fimages%2Fcommon%2Fnophoto%2Flisting.jpg' alt='' className='welcome-image'></img>
             </div>
             <div className='newest-spots-container'>
-                {available_spots && available_spots.map((spot, idx) => <SpotViewLarge spot={spot} />)}
+                {available_spots && available_spots.map((spot, idx) => <SpotViewLarge key={idx} spot={spot} />)}
             </div>
+            {console.log(location)}
             <div className='mission-container'>
                 <div className='mission-statement-container'>
                     <h4 id='mission-statement'>"We aim to ensure no human being has to go to sleep without shelter...."</h4>
@@ -43,6 +50,7 @@ const HomePageComponent = () => {
             </div>
             <div className='google-maps-container'>
                 <h4>Google Maps Here</h4>
+                <button ></button>
             </div>
         </div>
     )
