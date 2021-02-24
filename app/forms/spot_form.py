@@ -16,4 +16,3 @@ class SpotForm(FlaskForm):
     zipcode = IntegerField("zipcode", validators=[DataRequired()])
     description = TextAreaField("description", validators=[DataRequired()])
     capacity = IntegerField("capacity", validators=[DataRequired()])
-    availability = IntegerField("availability", validators=[DataRequired()])
