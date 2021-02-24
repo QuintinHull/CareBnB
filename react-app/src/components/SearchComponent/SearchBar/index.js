@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button';
@@ -34,6 +36,11 @@ const SearchBar = () => {
         }
     }
 
+    const executeSearch = (e) => {
+        console.log('here')
+        return history.push(`/locate?city=${location}&guest=${guestCount}`)
+    }
+
     return (
         <div className='search-bar-container'>
             <form className='search-bar-form'>
@@ -56,7 +63,7 @@ const SearchBar = () => {
                         onChange={updateGuestCount}
                     />
                 </InputGroup>
-                <ArrowRightCircleFill onClick={() => history.push('/locate')} />
+                <ArrowRightCircleFill onClick={executeSearch} />
                 {/* <div className='location-results-box'>
                     {spots && location && locationResults(spots, location)}
                 </div> */}

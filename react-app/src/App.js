@@ -103,7 +103,12 @@ function App() {
           {/* Search Page */}
           <ProtectedRoute
             path="/locate"
-            exact={true}
+            authenticated={authenticated}
+          >
+            <SearchPage />
+          </ProtectedRoute>
+          <ProtectedRoute
+            path='/locate'
             authenticated={authenticated}
           >
             <SearchPage />
