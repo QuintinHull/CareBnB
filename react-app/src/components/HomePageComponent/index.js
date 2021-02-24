@@ -6,6 +6,7 @@ import SearchBar from '../SearchComponent/SearchBar'
 import SpotViewLarge from '../SpotComponent/SpotViewLarge'
 
 import './home-page.css'
+import { WrappedGoogleMap } from "../GoogleMapsComponent/index";
 
 
 const HomePageComponent = () => {
@@ -49,8 +50,12 @@ const HomePageComponent = () => {
                 </div>
             </div>
             <div className='google-maps-container'>
-                <h4>Google Maps Here</h4>
-                <button ></button>
+                <WrappedGoogleMap
+                    googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDODBRJuvQ5Ef_a-iMreiwYWdjwy_e3ZW8'}
+                    loadingElement={<div style={{ height: "400px" }} />}
+                    containerElement={<div style={{ height: "800px" }} />}
+                    mapElement={<div style={{ height: "800px" }} />}
+                />
             </div>
         </div>
     )
