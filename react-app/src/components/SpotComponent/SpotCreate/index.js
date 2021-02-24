@@ -3,20 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSpot } from "../../../store/spot";
 import { useHistory } from "react-router-dom";
 
+import "./SpotCreate.css";
+
 const SpotCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const createdSpot = useSelector((state) => state.spot);
-
-  const [imageUrl, setImageUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [description, setDescription] = useState("");
-  const [capacity, setCapacity] = useState("");
-  const [availability, setAvailability] = useState("");
 
   const states = [
     "AL",
@@ -71,6 +63,16 @@ const SpotCreate = () => {
     "WY",
   ];
 
+  const [imageUrl, setImageUrl] = useState("");
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState(states[0]);
+  const [zipcode, setZipcode] = useState("");
+  const [description, setDescription] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [availability, setAvailability] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newSpot = {
@@ -84,10 +86,11 @@ const SpotCreate = () => {
       capacity,
       availability,
     };
-    await dispatch(createSpot(newSpot));
-    if (createdSpot) {
-      console.log(createdSpot);
-      history.push(`/spot/${createdSpot.id}`);
+    let addedSpot = await dispatch(createSpot(newSpot));
+    if (addedSpot) {
+      let spot_id = Object.keys(addedSpot.payload.spot)[0];
+      // console.log("----->", spot_id);
+      history.push(`/spot/${spot_id}`);
     }
   };
 
@@ -142,6 +145,7 @@ const SpotCreate = () => {
         <div>
           <label>Zip Code: </label>
           <input
+            className="spot-create-zipcode"
             type="number"
             value={zipcode}
             onChange={(e) => setZipcode(e.target.value)}
