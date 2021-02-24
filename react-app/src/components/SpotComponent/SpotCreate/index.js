@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button';
-import FormGroup from 'react-bootstrap/FormGroup'
-import FormLabel from 'react-bootstrap/FormLabel'
-import Form from 'react-bootstrap/Form'
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import FormGroup from "react-bootstrap/FormGroup";
+import FormLabel from "react-bootstrap/FormLabel";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import { createSpot } from "../../../store/spot";
 import { useHistory } from "react-router-dom";
 
@@ -98,88 +99,151 @@ const SpotCreate = () => {
   };
 
   return (
-    <div>
-      <Form onSubmit={handleSubmit}>
-        <h5>Register Your Spot</h5>
-        <Form.Group controlId="formBasicImage">
-          <Form.Label column="lg" lg={2}>Image URL: </Form.Label>
-          <Form.Control
-            type="text"
-            required
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formTitle">
-          <Form.Label column="lg" lg={2}>Title: </Form.Label>
-          <Form.Control
-            type="text"
-            required
-            valie={title}
-            onChange={(e) => setTitle(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formAddress">
-          <Form.Label column="lg" lg={2}>Address: </Form.Label>
-          <Form.Control
-            type="text"
-            required
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formCity">
-          <Form.Label column="lg" lg={2}>City: </Form.Label>
-          <Form.Control
-            type="text"
-            required
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Row>
-          <Form.Group inline controlId="formState">
+    <div className="spot-create-body">
+      <Container className="spot-create-container">
+        <Form onSubmit={handleSubmit}>
+          <Row>
             <Col>
-              <Form.Label>State: </Form.Label>
-              <Form.Control as="select" value={state} onChange={(e) => setState(e.target.value)}>
-                {states.map((state) => (
-                  <option key={state}>{state}</option>
-                ))}
-              </Form.Control>
+              <h5 className="spot-create-header">Register Your Spot</h5>
             </Col>
-          </Form.Group>
-          <Form.Group controlId="formZipCode">
+          </Row>
+          <Row>
             <Col>
-              <Form.Label>Zip Code: </Form.Label>
-              <Form.Control
-                className="spot-create-zipcode"
-                type="number"
-                value={zipcode}
-                onChange={(e) => setZipcode(e.target.value)}
-              ></Form.Control>
+              <Form.Group controlId="formBasicImage">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  Image URL:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-input"
+                  type="text"
+                  required
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
             </Col>
-          </Form.Group>
-        </Row>
-        <Form.Group controlId="formDescription">
-          <Form.Label column="lg" lg={2}>Description: </Form.Label>
-          <Form.Control
-            as="textarea"
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Form.Group controlId="formCapacity">
-          <Form.Label column="lg" lg={2}>Capacity: </Form.Label>
-          <Form.Control
-            type="number"
-            min="1"
-            value={capacity}
-            onChange={(e) => setCapacity(e.target.value)}
-          ></Form.Control>
-        </Form.Group>
-        <Button type="submit">Submit: </Button>
-      </Form>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="formTitle">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  Title:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-input"
+                  type="text"
+                  required
+                  valie={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="formAddress">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  Address:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-input"
+                  type="text"
+                  required
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="formCity">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  City:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-input"
+                  type="text"
+                  required
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group inline controlId="formState">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  State:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-input"
+                  as="select"
+                  value={state}
+                  onChange={(e) => setState(e.target.value)}
+                >
+                  {states.map((state) => (
+                    <option key={state}>{state}</option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+            </Col>
+            <Col>
+              <Form.Group controlId="formZipCode">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  Zip Code:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-zipcode spot-create-input"
+                  type="number"
+                  value={zipcode}
+                  onChange={(e) => setZipcode(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="formDescription">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  Description:{" "}
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  className="spot-create-input"
+                  type="text"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group controlId="formCapacity">
+                <Form.Label className="spot-create-label" column="lg" lg={2}>
+                  Capacity:{" "}
+                </Form.Label>
+                <Form.Control
+                  className="spot-create-input"
+                  type="number"
+                  min="1"
+                  value={capacity}
+                  onChange={(e) => setCapacity(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button type="submit" variant="outline-secondary">
+                Submit
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
     </div>
   );
 };
