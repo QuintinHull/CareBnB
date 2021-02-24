@@ -22,7 +22,9 @@ const SearchBar = () => {
     const updateGuestCount = (event) => setGuestCount(event.target.value);
 
 
-    useEffect(() => dispatch(getSpots()), [dispatch])
+    useEffect(() => {
+        dispatch(getSpots())
+    }, [dispatch])
 
     const locationResults = (spots, location) => {
         for (let spotId in spots) {
@@ -35,7 +37,7 @@ const SearchBar = () => {
     return (
         <div className='search-bar-container'>
             <form className='search-bar-form'>
-                <label for="city-input">Search a city</label>
+                <label >Search a city</label>
                 <InputGroup className="mb-3 city-input">
                     <FormControl
                         aria-label="City"
@@ -44,7 +46,7 @@ const SearchBar = () => {
                         onChange={updateLocation}
                     />
                 </InputGroup>
-                <label for="guest-input">How many guests?</label>
+                <label >How many guests?</label>
                 <InputGroup className="mb-3 guest-input">
                     <FormControl
                         type="number"

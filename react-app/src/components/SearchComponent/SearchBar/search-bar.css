@@ -6,20 +6,26 @@
     position: relative;
     top: 30px;
 
-    background-color: #E2DADB;
+    background-color: #A2A7A5;
     border-radius: 2em;
     padding-top: 12px;
-    width: 800px;
+    width: 700px;
 }
 
 .search-bar-form svg {
     font-size: 35px;
-    color: #A2A7A5;
+    color: #6D696A;
 }
 
 .search-bar-form svg:hover {
     font-size: 35px;
-    color: #6D696A;
+color: #E2DADB;
+    
+}
+
+.search-bar-form label {
+    margin-top: 7px;
+    margin-left: 10px;
 }
 
 .search-bar-form {
@@ -30,7 +36,7 @@
 
 .guest-input {
     height: 35px;
-    width: 100px;
+    width: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
