@@ -8,7 +8,7 @@ import "./SpotCreate.css";
 const SpotCreate = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const createdSpot = useSelector((state) => state.spot);
+  const createdSpot = useSelector((state) => state.spots.all_spots);
 
   const states = [
     "AL",
@@ -71,7 +71,6 @@ const SpotCreate = () => {
   const [zipcode, setZipcode] = useState("");
   const [description, setDescription] = useState("");
   const [capacity, setCapacity] = useState("");
-  const [availability, setAvailability] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -84,14 +83,11 @@ const SpotCreate = () => {
       zipcode,
       description,
       capacity,
-      availability,
     };
     let addedSpot = await dispatch(createSpot(newSpot));
-    if (addedSpot) {
-      let spot_id = Object.keys(addedSpot.payload.spot)[0];
-      // console.log("----->", spot_id);
-      history.push(`/spot/${spot_id}`);
-    }
+
+    console.log("----->", addedSpot);
+    history.push(`/spot/${addedSpot.spot.id}`);
   };
 
   return (
@@ -163,16 +159,9 @@ const SpotCreate = () => {
           <label>Capacity: </label>
           <input
             type="number"
+            min="1"
             value={capacity}
             onChange={(e) => setCapacity(e.target.value)}
-          ></input>
-        </div>
-        <div>
-          <label>Availability: </label>
-          <input
-            type="number"
-            value={availability}
-            onChange={(e) => setAvailability(e.target.value)}
           ></input>
         </div>
         <button type="submit">Submit: </button>

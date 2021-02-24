@@ -27,12 +27,12 @@ def create_spot():
             zipcode=form.data['zipcode'],
             description=form.data['description'],
             capacity=form.data['capacity'],
-            availability=form.data['availability'],
+            availability=form.data['capacity'],
             host_id=current_user.id
         )
         db.session.add(spot)
         db.session.commit()
-        return {"spot": {spot.id: spot.to_dict()}}
+        return {"spot": spot.to_dict()}
     return {"errors": "set errors here"}
 
 
