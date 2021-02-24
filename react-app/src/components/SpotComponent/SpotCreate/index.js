@@ -74,7 +74,7 @@ const SpotCreate = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const newSpot = {
-      imageUrl,
+      image_url: imageUrl,
       title,
       address,
       city,
