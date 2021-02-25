@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, IntegerField, SelectField
+from wtforms import StringField, TextAreaField, IntegerField, SelectField, FloatField
 from wtforms.validators import DataRequired
 from app.models import Spot
 
@@ -16,3 +16,5 @@ class SpotForm(FlaskForm):
     zipcode = IntegerField("zipcode", validators=[DataRequired()])
     description = TextAreaField("description", validators=[DataRequired()])
     capacity = IntegerField("capacity", validators=[DataRequired()])
+    latitude = FloatField("latitude")
+    longitude = FloatField("longitude")

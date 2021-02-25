@@ -1,18 +1,16 @@
-
-const LOAD = "spot/getAllSpots"
-const LOAD_ONE = "spot/getOneSpot"
-const LOAD_AVAILABLE = "spot/getAvailableSpots"
-const LOAD_SEARCH = "spot/getAllSearchedSpots"
-const CREATE_SPOT = "spot/createNewSpot"
-const DELETE_SPOT = "spot/deleteASpot"
+const LOAD = "spot/getAllSpots";
+const LOAD_ONE = "spot/getOneSpot";
+const LOAD_AVAILABLE = "spot/getAvailableSpots";
+const LOAD_SEARCH = "spot/getAllSearchedSpots";
+const CREATE_SPOT = "spot/createNewSpot";
+const DELETE_SPOT = "spot/deleteASpot";
 
 const getAllSearchedSpots = (spots) => {
   return {
     type: LOAD_SEARCH,
     payload: spots,
-  }
-}
-
+  };
+};
 
 const getAllSpots = (spots) => {
   return {
@@ -24,9 +22,9 @@ const getAllSpots = (spots) => {
 const getAvailableSpots = (spots) => {
   return {
     type: LOAD_AVAILABLE,
-    payload: spots
-  }
-}
+    payload: spots,
+  };
+};
 
 const createNewSpot = (spot) => {
   return {
@@ -49,7 +47,6 @@ const getOneSpot = (spot) => {
   };
 };
 
-
 export const getSpots = () => async (dispatch) => {
   const response = await fetch("/api/spots/");
   const spots = await response.json();
@@ -57,10 +54,10 @@ export const getSpots = () => async (dispatch) => {
 };
 
 export const searchSpots = (guest_size, city) => async (dispatch) => {
-  const response = await fetch(`/api/spots/search/${guest_size}&${city}`)
+  const response = await fetch(`/api/spots/search/${guest_size}&${city}`);
   const spots = await response.json();
-  return dispatch(getAllSearchedSpots(spots))
-}
+  return dispatch(getAllSearchedSpots(spots));
+};
 
 export const getSpot = (id) => async (dispatch) => {
   const response = await fetch(`/api/spots/${id}`);
@@ -79,6 +76,8 @@ export const createSpot = ({
   description,
   capacity,
   availability,
+  latitude,
+  longitude,
 }) => async (dispatch) => {
   const response = await fetch("/api/spots/", {
     method: "POST",
@@ -95,6 +94,8 @@ export const createSpot = ({
       description,
       capacity,
       availability,
+      latitude,
+      longitude,
     }),
   });
   const spot = await response.json();
@@ -113,44 +114,42 @@ export const deleteSpot = ({ spotId }) => async (dispatch) => {
   return dispatch(deleteASpot(spot));
 };
 
+export const getTopAvailableSpots = () => async (dispatch) => {
+  const response = await fetch("/api/spots/top-available");
+  const spots = await response.json();
+  return dispatch(getAvailableSpots(spots));
+};
 
-export const getTopAvailableSpots = () => async dispatch => {
-  const response = await fetch('/api/spots/top-available');
-  const spots = await response.json()
-  return dispatch(getAvailableSpots(spots))
-}
-
-const initialState = {}
+const initialState = {};
 
 const spotReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case LOAD:
-      newState = Object.assign({}, state, { ...action.payload })
-      return newState
+      newState = Object.assign({}, state, { ...action.payload });
+      return newState;
     case LOAD_ONE:
-      newState = Object.assign({}, state, { ...action.payload })
-      return newState
+      newState = Object.assign({}, state, { ...action.payload });
+      return newState;
     case LOAD_AVAILABLE:
-      newState = Object.assign({}, state, { ...action.payload })
-      return newState
+      newState = Object.assign({}, state, { ...action.payload });
+      return newState;
     case LOAD_SEARCH:
-      newState = Object.assign({}, state, { ...action.payload })
-      return newState
+      newState = Object.assign({}, state, { ...action.payload });
+      return newState;
     case CREATE_SPOT:
-      const new_spot = action.payload.spot
-      const all_spots = state.all_spots
-      newState = { all_spots: { ...all_spots, ...new_spot } }
-      return newState
+      const new_spot = action.payload.spot;
+      const all_spots = state.all_spots;
+      newState = { all_spots: { ...all_spots, ...new_spot } };
+      return newState;
     case DELETE_SPOT:
-      const deleted_spot = action.payload.spot
-      newState = Object.assign({}, state)
-      delete newState.all_spots[deleted_spot.id]
-      return newState
+      const deleted_spot = action.payload.spot;
+      newState = Object.assign({}, state);
+      delete newState.all_spots[deleted_spot.id];
+      return newState;
     default:
-      return state
+      return state;
   }
-}
-
+};
 
 export default spotReducer;

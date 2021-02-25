@@ -9,8 +9,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import UploadPictureS3Client from "../../../aws/s3";
-import { createSpot } from "../../../store/spot";
+import { createSpot, getTopAvailableSpots } from "../../../store/spot";
 import { useHistory } from "react-router-dom";
+import Geocode from "react-geocode";
+import { googleApiKey } from "../../GoogleMapsComponent/apikey";
 
 import "./SpotCreate.css";
 
@@ -81,8 +83,40 @@ const SpotCreate = () => {
   const [description, setDescription] = useState("");
   const [capacity, setCapacity] = useState("");
 
+  Geocode.setApiKey(googleApiKey);
+  Geocode.setLanguage("en");
+  Geocode.setLocationType("ROOFTOP");
+
+  const getLat = (address, city, state, zipcode) => {
+    return Geocode.fromAddress(`${address} ${city}, ${state} ${zipcode}`).then(
+      (response) => {
+        const { lat } = response.results[0].geometry.location;
+        console.log("lat-------->", lat);
+        return lat;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
+
+  const getLng = (address, city, state, zipcode) => {
+    return Geocode.fromAddress(`${address} ${city}, ${state} ${zipcode}`).then(
+      (response) => {
+        const { lng } = response.results[0].geometry.location;
+        console.log("lng-------->", lng);
+        return lng;
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const lat = await getLat(address, city, state, zipcode);
+    const lng = await getLng(address, city, state, zipcode);
     const newSpot = {
       image_url: imageUrl,
       title,
@@ -92,7 +126,11 @@ const SpotCreate = () => {
       zipcode,
       description,
       capacity,
+      latitude: lat,
+      longitude: lng,
     };
+    console.log(newSpot);
+
     let addedSpot = await dispatch(createSpot(newSpot));
 
     console.log("----->", addedSpot);
@@ -127,7 +165,7 @@ const SpotCreate = () => {
                   className="spot-create-input"
                   type="file"
                   required
-                  value={imageUrl}
+                  // value={imageUrl}
                   onChange={uploadFile}
                 ></Form.Control>
               </Form.Group>
