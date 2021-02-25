@@ -8,7 +8,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import UploadPictureS3Client from "../../../aws/s3"
+import UploadPictureS3Client from "../../../aws/s3";
 import { createSpot } from "../../../store/spot";
 import { useHistory } from "react-router-dom";
 
@@ -102,8 +102,10 @@ const SpotCreate = () => {
   const uploadFile = (e) => {
     e.preventDefault();
 
-    UploadPictureS3Client.uploadFile(e.target.files[0], `spot-${title}-${new Date()}`)
-      .then(data => console.log(data))
+    UploadPictureS3Client.uploadFile(
+      e.target.files[0],
+      `spot-${title}-${new Date()}`
+    ).then((data) => setImageUrl(data.location));
   };
 
   return (
