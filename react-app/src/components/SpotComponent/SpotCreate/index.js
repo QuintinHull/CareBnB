@@ -8,6 +8,7 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import UploadPictureS3Client from "../../../aws/s3"
 import { createSpot } from "../../../store/spot";
 import { useHistory } from "react-router-dom";
 
@@ -98,6 +99,13 @@ const SpotCreate = () => {
     history.push(`/spot/${addedSpot.spot.id}`);
   };
 
+  const uploadFile = (e) => {
+    e.preventDefault();
+
+    UploadPictureS3Client.uploadFile(e.target.files[0], `spot-${title}-${new Date()}`)
+      .then(data => console.log(data))
+  };
+
   return (
     <div className="spot-create-body">
       <Container className="spot-create-container">
@@ -115,10 +123,10 @@ const SpotCreate = () => {
                 </Form.Label>
                 <Form.Control
                   className="spot-create-input"
-                  type="text"
+                  type="file"
                   required
                   value={imageUrl}
-                  onChange={(e) => setImageUrl(e.target.value)}
+                  onChange={uploadFile}
                 ></Form.Control>
               </Form.Group>
             </Col>
