@@ -149,6 +149,7 @@ const SpotCreate = () => {
                   className="spot-create-input"
                   type="text"
                   required
+                  placeholder="2104 Park Street"
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                 ></Form.Control>
@@ -165,6 +166,7 @@ const SpotCreate = () => {
                   className="spot-create-input"
                   type="text"
                   required
+                  placeholder="Springfield"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                 ></Form.Control>
@@ -197,6 +199,7 @@ const SpotCreate = () => {
                 <Form.Control
                   className="spot-create-zipcode spot-create-input"
                   type="number"
+                  placeholder="77449"
                   value={zipcode}
                   onChange={(e) => setZipcode(e.target.value)}
                 ></Form.Control>
@@ -213,6 +216,7 @@ const SpotCreate = () => {
                   as="textarea"
                   className="spot-create-input"
                   type="text"
+                  placeholder="Leave a brief description of your spot here!"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 ></Form.Control>
@@ -236,7 +240,7 @@ const SpotCreate = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="spot-create-button">
               <Button type="submit" variant="outline-secondary">
                 Submit
               </Button>
