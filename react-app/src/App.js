@@ -13,6 +13,7 @@ import configureStore from "./store";
 import HomePage from "./components/HomePageComponent";
 import SpotPage from "./components/SpotComponent/SpotPage";
 import BookingPageComponent from "./components/BookingPageComponent";
+import FundingComponent from "./components/FundingComponent";
 import SearchPage from "./components/SearchComponent/SearchPage";
 import SpotCreate from "./components/SpotComponent/SpotCreate";
 
@@ -98,6 +99,15 @@ function App() {
             authenticated={authenticated}
           >
             <BookingPageComponent />
+          </ProtectedRoute>
+
+          {/* Funding Page */}
+          <ProtectedRoute
+            path="/spot/fund/:spotId"
+            exact={true}
+            authenticated={authenticated}
+          >
+            <FundingComponent />
           </ProtectedRoute>
 
           {/* Search Page */}

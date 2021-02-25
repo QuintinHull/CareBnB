@@ -38,7 +38,7 @@ export const getFunding = (id) => async (dispatch) => {
 };
 
 export const addFunding = (payload) => async (dispatch) => {
-  const response = await fetch("api/fundings/", {
+  const response = await fetch(`/api/fundings/${payload.spotId}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
