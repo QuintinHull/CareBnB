@@ -16,13 +16,8 @@ const HomePageComponent = () => {
 
     const available_spots = useSelector(state => state.spots.available_spots)
 
-    useEffect(() => {
-        Geolocation.getCurrentPosition(position => {
-            const initialPosition = JSON.stringify(position);
-            console.log(initialPosition)
-        }, error => alert(JSON.stringify(error)), { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 })
-    }, [])
     useEffect(() => console.log(JSON.stringify(location)), [location])
+
 
     useEffect(() => {
         dispatch(getTopAvailableSpots())

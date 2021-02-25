@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
@@ -12,11 +12,12 @@ import { getSpots } from '../../../store/spot';
 import './search-bar.css'
 
 const SearchBar = () => {
+    const curr_location = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
-
+    console.log(curr_location.pathname)
     const [location, setLocation] = useState('');
-    const [guestCount, setGuestCount] = useState(0)
+    const [guestCount, setGuestCount] = useState(1)
 
     const spots = useSelector(state => state.spots.all_spots)
 
@@ -36,15 +37,40 @@ const SearchBar = () => {
         }
     }
 
+    const search_bar = document.getElementById('search-bar-container-scrolled')
+    const search_button = document.getElementById('search-butt')
+
+    document.onscroll = () => {
+        const top = window.pageYOffset
+        // search_button.onmouseover = () => { search_button.style.color = "#6D696A" }
+        // search_button.onmouseover = () => { search_button.style.color = '#6D696B' }
+        if (top >= 75 && search_bar) {
+            search_bar.style.backgroundColor = "#6D696A"
+            search_button.onmouseover = () => { search_button.style.color = '#c0c5c3' }
+            search_button.onmouseout = () => { search_button.style.color = '#DAE2DF' }
+            search_button.style.color = '#DAE2DF'
+            search_button.style.transition = "all .2s ease"
+            search_bar.style.transition = "all .2s ease"
+
+        } else if (top < 75) {
+            search_bar.style.backgroundColor = "#A2A7A5"
+            search_button.onmouseover = () => { search_button.style.color = '#616060' }
+            search_button.onmouseout = () => { search_button.style.color = '#6D696A' }
+            search_button.style.color = '#6D696A'
+        }
+    }
+
+
+
     const executeSearch = (e) => {
         console.log('here')
         return history.push(`/locate?city=${location}&guest=${guestCount}`)
     }
 
     return (
-        <div className='search-bar-container'>
+        <div className='search-bar-container' id='search-bar-container-scrolled'>
             <form className='search-bar-form'>
-                <label >Search a city</label>
+                <label >Where are you going?</label>
                 <InputGroup className="mb-3 city-input">
                     <FormControl
                         aria-label="City"
@@ -60,10 +86,11 @@ const SearchBar = () => {
                         aria-label="Guests"
                         aria-describedby="inputGroup-sizing-default"
                         value={guestCount}
+                        min={'1'}
                         onChange={updateGuestCount}
                     />
                 </InputGroup>
-                <ArrowRightCircleFill onClick={executeSearch} />
+                <ArrowRightCircleFill id='search-butt' onClick={executeSearch} />
                 {/* <div className='location-results-box'>
                     {spots && location && locationResults(spots, location)}
                 </div> */}
