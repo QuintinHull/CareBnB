@@ -10,6 +10,6 @@ const GoogleMapsComponent = () => {
             defaultCenter={{ lat: 32, lng: -97 }}
         />
     )
-};
+}
 
 export const WrappedGoogleMap = withScriptjs(withGoogleMap(GoogleMapsComponent))
