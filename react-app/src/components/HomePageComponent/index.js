@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Carousel } from "react-bootstrap"
 import { getTopAvailableSpots } from "../../store/spot"
+import { googleApiKey } from '../GoogleMapsComponent/apikey'
 import SearchBar from '../SearchComponent/SearchBar'
 import SpotViewLarge from '../SpotComponent/SpotViewLarge'
 
@@ -62,7 +63,7 @@ const HomePageComponent = () => {
             <hr style={{ width: '80%', marginBottom: '60px', marginTop: '60px' }}></hr>
             <div className='google-maps-container'>
                 <WrappedGoogleMap
-                    googleMapURL={'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyDODBRJuvQ5Ef_a-iMreiwYWdjwy_e3ZW8'}
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${googleApiKey}`}
                     loadingElement={<div style={{ height: "400px" }} />}
                     containerElement={<div style={{ height: "800px" }} />}
                     mapElement={<div style={{ height: "800px" }} />}

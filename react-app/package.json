@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.6.0",
+    "dotenv": "^8.2.0",
     "http-proxy-middleware": "^1.0.5",
     "react": "^16.13.1",
     "react-aws-s3": "^1.4.0",
