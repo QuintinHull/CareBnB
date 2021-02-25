@@ -1,11 +1,12 @@
-/* .spot-create-body {
-  border: solid orangered;
-} */
+.spot-create-body {
+  margin-top: 15px;
+}
 
 .spot-create-container {
   background-color: #dae2df;
   /* border: solid #e2dadb; */
   border-radius: 5px;
+  box-shadow: 1px 1px 1px rgb(172, 171, 171);
 }
 
 .spot-create-input {
@@ -16,10 +17,24 @@
   display: flex;
   justify-content: center;
   margin-top: 15px;
+  font-size: 25px;
 }
 
 .spot-create-zipcode::-webkit-inner-spin-button,
 .spot-create-zipcode::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.spot-create-button {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.spot-create-button button {
+  width: 100px;
+  background-color: #6d696a;
+  color: #ffffff;
+  border-radius: 10px;
 }
