@@ -7,15 +7,11 @@ import { PersonCircle, Search } from 'react-bootstrap-icons';
 
 const NavBar = ({ setAuthenticated }) => {
   return (
-    <Navbar style={{height: 90}} bg="light" variant="light" sticky="top" className="justify-content-between">
+    <Navbar style={{ height: 90, backgroundColor: '#E2DADB' }} variant="light" sticky="top" className="justify-content-between">
       <Nav className="w-30 p-0">
-        <Navbar.Brand href="#home">CareBnB</Navbar.Brand>
+        <Navbar.Brand href="/">CareBnB</Navbar.Brand>
       </Nav>
       <Nav className="w-30 p-0">
-        <Form className="blank" inline>
-          <FormControl type="text" placeholder=' Search' className="w-30 p-0" />
-          <Search size={30} />
-        </Form>
       </Nav>
       <Nav className="w-30 p-0">
         <Nav className="my-auto mr-3">
@@ -48,7 +44,7 @@ const NavBar = ({ setAuthenticated }) => {
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
-      
+
     </Navbar>
 
   );

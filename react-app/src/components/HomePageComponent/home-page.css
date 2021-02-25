@@ -9,9 +9,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f9fa;
+    position: sticky;
+    top: 15px;
+    z-index: 1030;
+    background: 0;
     width: 100%;
 }
+
+#namaste {
+    height: 100px;
+}
+
+#carouselitem {
+    height: 300px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+
+.carousel-caption p, .carousel-control-prev, .carousel-control-next {
+    color: #A2A7A5
+}
+
 
 #mission-statement {
     font-size: 35px;
@@ -22,8 +41,9 @@
     background-color: lightgray;
     transition: box-shadow .3s;
     height: 550px;
+    min-width: 400px;
     width: 400px;
-    margin: 0px 20px;
+    margin: 20px 20px;
     padding: 20px;
     border-radius: 0.5em;
 }
@@ -37,6 +57,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    top: -33px;
 }
 
 .home-search-bar-container {
@@ -51,22 +73,26 @@
 .welcome-search-container {
     height: 500px;
     width: 100%;
+    position: relative;
+    z-index: -1;
+    top: -30px;
 }
 
 .newest-spots-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    overflow-x: scroll;
-    align-items: center;
-    height: 650px;
+    /* overflow-x: scroll; */
+    /* align-items: center; */
+    margin: 0px 30px;
+    /* height: 650px; */
     width: 100%;
 }
 
 .mission-container {
     display: grid;
     grid-template-columns: 70% 30%;
-    background-color: lightgray;
     height: 300px;
     width: 100%;
 }
@@ -77,14 +103,14 @@
     justify-content: center;
     align-items: center;
     padding: 0px 50px;
-    background-color: lightsteelblue;
 }
 
 .amount-sheltered-container {
-    display: flex;
-    flex-direction: column;
+    /* background-color: #DAE2DF; */
+    /* display: flex; */
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .google-maps-container {
