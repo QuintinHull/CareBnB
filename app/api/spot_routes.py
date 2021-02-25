@@ -18,6 +18,7 @@ def all_spots():
 def create_spot():
     form = SpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print(form.data["capacity"])
     if form.validate_on_submit():
         spot = Spot(
             image_url=form.data['image_url'],
@@ -29,7 +30,9 @@ def create_spot():
             description=form.data['description'],
             capacity=form.data['capacity'],
             availability=form.data['capacity'],
-            host_id=current_user.id
+            latitude=form.data["latitude"],
+            longitude=form.data["longitude"],
+            host_id=current_user.id,
         )
         db.session.add(spot)
         db.session.commit()

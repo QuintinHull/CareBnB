@@ -14,6 +14,8 @@ class Spot(db.Model):
     description = db.Column(db.String(500), nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
     availability = db.Column(db.Integer, nullable=False)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     host_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     host = db.relationship("User")
@@ -33,5 +35,7 @@ class Spot(db.Model):
             "description": self.description,
             "capacity": self.capacity,
             "availability": self.availability,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
             "host_id": self.host_id
         }
