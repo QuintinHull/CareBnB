@@ -13,7 +13,22 @@
     top: 15px;
     z-index: 1030;
     background: 0;
-    width: 100%;
+    /* width: 80%; */
+}
+
+@media screen and (max-width: 1250px) {
+    .home-search {
+        position: fixed;
+        z-index: 1000;
+        top: 90px;
+        width: 100%;
+    }
+
+    .search-bar-container {
+        width: 100%;
+        border-radius: 0;
+        background-color: #E2DADB;
+    }
 }
 
 #namaste {
@@ -31,10 +46,17 @@
     color: #A2A7A5
 }
 
+.picture-color {
+    position: relative;
+    top: -80px;
+    width: 100%;
+    height: 80px;
+    background-color: #E2DADB;
+}
 
 #mission-statement {
     font-size: 35px;
-    font-family: Parkavenue, cursive;
+    font-family: 'Josefin Sans';
 }
 
 .spot-view-large-body {

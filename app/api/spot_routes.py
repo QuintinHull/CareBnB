@@ -63,5 +63,5 @@ def available_spots():
 @spot_routes.route('/search/<guest_size>&<city>')
 def search_spots(guest_size, city):
     spots = Spot.query.filter(
-        and_(Spot.city.like(f'{city}%'), Spot.availability >= guest_size))
+        and_(Spot.city.ilike(f'{city}%'), Spot.availability >= guest_size))
     return {'searched_spots': [spot.to_dict() for spot in spots]}
