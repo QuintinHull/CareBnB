@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import { Navbar, Nav, Image, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { PersonCircle } from 'react-bootstrap-icons';
 
@@ -11,7 +11,7 @@ const NavBar = ({ setAuthenticated }) => {
     <Navbar style={{ height: 90, backgroundColor: '#E2DADB' }} variant="light" sticky="top" className="justify-content-between">
       <Nav className="w-30 p-0">
         <Navbar.Brand href="/">
-          <Image src={'https://cdn.discordapp.com/attachments/812747635676151882/814564949254733914/New_Project.png'}  style={{ height: '12rem' }}/>
+          <img className='logo' src={'https://cdn.discordapp.com/attachments/812747635676151882/814564949254733914/New_Project.png'}/>
         </Navbar.Brand>
       </Nav>
       <Nav className="w-30 p-0">
