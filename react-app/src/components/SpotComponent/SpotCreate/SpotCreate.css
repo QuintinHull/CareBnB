@@ -1,5 +1,6 @@
 .spot-create-body {
   margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .spot-create-container {
@@ -17,7 +18,8 @@
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  font-size: 25px;
+  font-size: 35px;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 .spot-create-zipcode::-webkit-inner-spin-button,
