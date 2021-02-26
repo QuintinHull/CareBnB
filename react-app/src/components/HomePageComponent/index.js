@@ -5,7 +5,6 @@ import { getTopAvailableSpots } from "../../store/spot";
 import { googleApiKey } from "../GoogleMapsComponent/apikey";
 import SearchBar from "../SearchComponent/SearchBar";
 import SpotViewLarge from "../SpotComponent/SpotViewLarge";
-import { HouseFill } from "react-bootstrap-icons";
 import "./home-page.css";
 import { WrappedGoogleMap } from "../GoogleMapsComponent/index";
 
