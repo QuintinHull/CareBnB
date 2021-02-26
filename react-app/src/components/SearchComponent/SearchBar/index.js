@@ -42,18 +42,14 @@ const SearchBar = () => {
     document.onscroll = () => {
         let top = window.pageYOffset
         if (top >= 75 && search_bar) {
-            search_bar.style.backgroundColor = "#6D696A"
             search_button.onmouseover = () => { search_button.style.color = '#c0c5c3' }
             search_button.onmouseout = () => { search_button.style.color = '#DAE2DF' }
-            search_button.style.color = '#DAE2DF'
             search_button.style.transition = "all .2s ease"
             search_bar.style.transition = "all .2s ease"
 
         } else if (top < 75 && search_bar) {
-            search_bar.style.backgroundColor = "#A2A7A5"
             search_button.onmouseover = () => { search_button.style.color = '#616060' }
             search_button.onmouseout = () => { search_button.style.color = '#6D696A' }
-            search_button.style.color = '#6D696A'
         }
     }
 
