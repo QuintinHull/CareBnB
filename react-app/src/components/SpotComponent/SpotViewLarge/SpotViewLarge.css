@@ -1,0 +1,21 @@
+.spot-view-large-body{
+  overflow: hidden;
+  position: relative;
+  background-color: white;
+  padding: 0;
+  border-color: coral;
+}
+
+.spot-view-large-image{
+  width: 100%;
+  height: auto;
+
+
+  overflow: hidden;
+}
+
+.spot-view-large-text{
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
