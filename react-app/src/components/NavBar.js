@@ -49,11 +49,11 @@ const NavBar = ({ setAuthenticated }) => {
             </NavLink>
           </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item>
+          {/* <NavDropdown.Item>
             <NavLink to="/users" exact={true} activeClassName="active">
               Users
             </NavLink>
-          </NavDropdown.Item>
+          </NavDropdown.Item> */}
           <NavDropdown.Item>
             <LogoutButton setAuthenticated={setAuthenticated} />
           </NavDropdown.Item>
