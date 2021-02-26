@@ -240,7 +240,7 @@ const SpotCreate = () => {
             <Col>
               <Form.Group controlId="formZipCode">
                 <Form.Label className="spot-create-label" column="lg" lg={2}>
-                  Zip Code:{" "}
+                  Zipcode:{" "}
                 </Form.Label>
                 <Form.Control
                   className="spot-create-zipcode spot-create-input"
