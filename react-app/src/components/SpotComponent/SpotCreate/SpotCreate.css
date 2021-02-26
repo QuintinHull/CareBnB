@@ -12,6 +12,11 @@
 
 .spot-create-input {
   background-color: #ffffff;
+  font-family: "Martel Sans";
+}
+
+.spot-create-label {
+  font-family: "Marcellus";
 }
 
 .spot-create-header {
@@ -39,4 +44,5 @@
   background-color: #6d696a;
   color: #ffffff;
   border-radius: 10px;
+  font-family: "Martel Sans";
 }

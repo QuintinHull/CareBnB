@@ -148,7 +148,7 @@ const SpotCreate = () => {
         <Form onSubmit={handleSubmit}>
           <Row>
             <Col>
-              <h5 className="spot-create-header">Register Your Spot</h5>
+              <h1 className="spot-create-header">Register Your Spot</h1>
             </Col>
           </Row>
           <Row>
@@ -240,7 +240,7 @@ const SpotCreate = () => {
             <Col>
               <Form.Group controlId="formZipCode">
                 <Form.Label className="spot-create-label" column="lg" lg={2}>
-                  Zip Code:{" "}
+                  Zipcode:{" "}
                 </Form.Label>
                 <Form.Control
                   className="spot-create-zipcode spot-create-input"
