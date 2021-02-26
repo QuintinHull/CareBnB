@@ -1,26 +1,38 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { PersonCircle } from 'react-bootstrap-icons';
-
+import React from "react";
+import { NavLink } from "react-router-dom";
+import LogoutButton from "./auth/LogoutButton";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { PersonCircle } from "react-bootstrap-icons";
 
 const NavBar = ({ setAuthenticated }) => {
   return (
-    <Navbar style={{ height: 90, backgroundColor: '#E2DADB' }} variant="light" sticky="top" className="justify-content-between">
+    <Navbar
+      style={{ height: 90, backgroundColor: "#E2DADB" }}
+      variant="light"
+      sticky="top"
+      className="justify-content-between"
+    >
       <Nav className="w-30 p-0">
         <Navbar.Brand href="/">
-          <img className='logo' src={'https://cdn.discordapp.com/attachments/812747635676151882/814564949254733914/New_Project.png'}/>
+          <img
+            className="logo"
+            src={
+              "https://cdn.discordapp.com/attachments/812747635676151882/814564949254733914/New_Project.png"
+            }
+          />
         </Navbar.Brand>
       </Nav>
-      <Nav className="w-30 p-0">
-      </Nav>
+      <Nav className="w-30 p-0"></Nav>
       <Nav className="w-30 p-0">
         <Nav className="my-auto mr-3">
-          <NavLink to="/spot">Host a Spot</NavLink>
+          <NavLink to="/spot/create">Host a Spot</NavLink>
         </Nav>
-        <NavDropdown title={<PersonCircle size={30} />} id="basic-nav-dropdown" className="dropleft">
+        <NavDropdown
+          title={<PersonCircle size={30} />}
+          id="basic-nav-dropdown"
+          className="dropleft"
+        >
           <NavDropdown.Item>
             <NavLink to="/" exact={true} activeClassName="active">
               Home
@@ -47,10 +59,8 @@ const NavBar = ({ setAuthenticated }) => {
           </NavDropdown.Item>
         </NavDropdown>
       </Nav>
-
     </Navbar>
-
   );
-}
+};
 
 export default NavBar;
