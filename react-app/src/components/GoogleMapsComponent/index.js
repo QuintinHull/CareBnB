@@ -34,32 +34,27 @@ const GoogleMapsComponent = () => {
           <Marker
             key={spot.id}
             position={{ lat: spot.latitude, lng: spot.longitude }}
+            onClick={() => {
+              setSelectedPark(spot);
+            }}
             icon={{
               url: "https://i.postimg.cc/gjTZdbW3/CBlogo-Transparent.png",
               scaledSize: new window.google.maps.Size(35, 35),
             }}
-            onClick={() => {
-              setSelectedPark(spot);
-            }}
-            {...(selectedPark && (
-              <InfoWindow
-                position={{
-                  lat: selectedPark.latitude,
-                  lng: selectedPark.longitude,
-                }}
-                onCloseClick={() => {
-                  setSelectedPark(null);
-                }}
-              >
-                <div>
-                  <NavLink to={`spot/${selectedPark.id}`}>
-                    Availability: {selectedPark.availability}
-                  </NavLink>
-                </div>
-              </InfoWindow>
-            ))}
           />
         ))}
+      {selectedPark && (
+        <InfoWindow
+          position={{ lat: selectedPark.latitude, lng: selectedPark.longitude }}
+          onCloseClick={() => {
+            setSelectedPark(null);
+          }}
+        >
+          <NavLink to={`spot/${selectedPark.id}`}>
+            Availability: {selectedPark.availability}
+          </NavLink>
+        </InfoWindow>
+      )}
     </GoogleMap>
   );
 };
