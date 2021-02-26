@@ -18,7 +18,6 @@ const FundingComponent = ({ authenticated }) => {
 
   const onFundingSubmit = async (e) => {
     e.preventDefault();
-    console.log('spotId: ', spotId)
     dispatch(fundingActions.addFunding({spotId, sponsorship_cost}))
     // Redirect('/')
   }

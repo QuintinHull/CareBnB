@@ -29,7 +29,6 @@ const GoogleMapsComponent = () => {
       defaultCenter={{ lat: 36.1627, lng: -86.7816 }}
       defaultOptions={{ styles: mapStyles }}
     >
-      {allSpots && console.log("THIS SHOULD BE ALL SPOTS", allSpots)}
       {allSpots &&
         Object.values(allSpots).map((spot) => (
           <Marker
