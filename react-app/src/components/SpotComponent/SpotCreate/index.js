@@ -91,7 +91,6 @@ const SpotCreate = () => {
     return Geocode.fromAddress(`${address} ${city}, ${state} ${zipcode}`).then(
       (response) => {
         const { lat } = response.results[0].geometry.location;
-        console.log("lat-------->", lat);
         return lat;
       },
       (error) => {
@@ -104,7 +103,6 @@ const SpotCreate = () => {
     return Geocode.fromAddress(`${address} ${city}, ${state} ${zipcode}`).then(
       (response) => {
         const { lng } = response.results[0].geometry.location;
-        console.log("lng-------->", lng);
         return lng;
       },
       (error) => {
@@ -129,11 +127,9 @@ const SpotCreate = () => {
       latitude: lat,
       longitude: lng,
     };
-    console.log(newSpot);
 
     let addedSpot = await dispatch(createSpot(newSpot));
 
-    console.log("----->", addedSpot);
     history.push(`/spot/${addedSpot.spot.id}`);
   };
 

@@ -15,8 +15,6 @@ const HomePageComponent = () => {
 
   const available_spots = useSelector((state) => state.spots.available_spots);
 
-  useEffect(() => console.log(JSON.stringify(location)), [location]);
-
   useEffect(() => {
     dispatch(getTopAvailableSpots());
   }, [dispatch]);

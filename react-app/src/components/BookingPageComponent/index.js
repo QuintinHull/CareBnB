@@ -18,7 +18,6 @@ const BookingPageComponent = ({ authenticated }) => {
 
   const onBookingSubmit = async (e) => {
     e.preventDefault();
-    console.log('spotId: ', spotId)
     dispatch(bookingActions.addBooking({spotId, group_size}))
     // Redirect('/')
   }

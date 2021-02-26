@@ -20,7 +20,6 @@ const SpotPage = () => {
     return (
         <>
             <div className = "spot-body">
-                {/* {spotSelector.spot && console.log(spotSelector.spot)} */}
                 {spotSelector.spot && (
                     <>
                         <h2>{spotSelector.spot.title}</h2>

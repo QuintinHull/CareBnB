@@ -15,7 +15,6 @@ const SearchBar = () => {
     const curr_location = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
-    console.log(curr_location.pathname)
     const [location, setLocation] = useState('');
     const [guestCount, setGuestCount] = useState(1)
 
@@ -61,7 +60,6 @@ const SearchBar = () => {
 
 
     const executeSearch = (e) => {
-        console.log('here')
         return history.push(`/locate?city=${location}&guest=${guestCount}`)
     }
 
