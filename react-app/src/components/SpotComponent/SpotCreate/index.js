@@ -176,6 +176,7 @@ const SpotCreate = () => {
                 <Form.Control
                   className="spot-create-input"
                   type="text"
+                  placeholder="Loft"
                   required
                   valie={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -183,6 +184,7 @@ const SpotCreate = () => {
               </Form.Group>
             </Col>
           </Row>
+          <hr></hr>
           <Row>
             <Col>
               <Form.Group controlId="formAddress">
@@ -250,6 +252,7 @@ const SpotCreate = () => {
               </Form.Group>
             </Col>
           </Row>
+          <hr></hr>
           <Row>
             <Col>
               <Form.Group controlId="formDescription">
@@ -276,6 +279,7 @@ const SpotCreate = () => {
                 <Form.Control
                   className="spot-create-input"
                   type="number"
+                  placeholder="2"
                   min="1"
                   value={capacity}
                   onChange={(e) => setCapacity(e.target.value)}
