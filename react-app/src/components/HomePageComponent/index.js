@@ -21,6 +21,9 @@ const HomePageComponent = () => {
 
   return (
     <div className="home-body">
+      {/* <div className='home-search-alt'>
+        <SearchBar />
+      </div> */}
       <div className="home-search">
         <SearchBar />
       </div>
@@ -30,8 +33,10 @@ const HomePageComponent = () => {
           alt=""
           className="welcome-image"
         ></img>
+        <div className='picture-color' />
       </div>
       <hr style={{ width: "80%" }}></hr>
+      <h1>Experience a spot</h1>
       <div className="newest-spots-container">
         {available_spots &&
           available_spots.map((spot, idx) => (
@@ -79,7 +84,7 @@ const HomePageComponent = () => {
           mapElement={<div style={{ height: "800px" }} />}
         />
       </div>
-    </div>
+    </div >
   );
 };
 

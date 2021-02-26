@@ -8,3 +8,15 @@
   height: auto;
 
 }
+
+h1, h2 {
+  font-family: 'Josefin Sans';
+}
+
+h3, h4, h5 {
+  font-family: 'Marcellus';
+}
+
+a, p, button, .btn, .card-title, label {
+  font-family: 'Martel Sans';
+}
