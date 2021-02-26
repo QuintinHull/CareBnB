@@ -2,3 +2,9 @@
 .btn:hover {
     background-color: #6D696A;
 }
+
+.logo {
+  width: 100px;
+  height: auto;
+
+}
