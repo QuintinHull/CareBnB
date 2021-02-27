@@ -4,7 +4,7 @@ import { Carousel } from "react-bootstrap";
 import { getTopAvailableSpots } from "../../store/spot";
 import { googleApiKey } from "../GoogleMapsComponent/apikey";
 import SearchBar from "../SearchComponent/SearchBar";
-import SpotViewLarge from "../SpotComponent/SpotViewLarge";
+import SpotViewMini from "../SpotComponent/SpotViewMini";
 import "./home-page.css";
 import { WrappedGoogleMap } from "../GoogleMapsComponent/index";
 
@@ -40,7 +40,7 @@ const HomePageComponent = () => {
       <div className="newest-spots-container">
         {available_spots &&
           available_spots.map((spot, idx) => (
-            <SpotViewLarge key={idx} spot={spot} />
+            <SpotViewMini key={idx} spot={spot} />
           ))}
       </div>
       <hr style={{ width: "80%", marginBottom: "60px" }}></hr>
