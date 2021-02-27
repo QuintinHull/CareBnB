@@ -1,0 +1,14 @@
+.spot-view-map .spotcard {
+    background-color: #DAE2DF;
+    padding: 20px;
+    margin: 10px;
+    min-width: 250px;
+    max-width: 250px;
+    max-height: 350x;
+    box-shadow: 0 1px 5px #A2A7A5;
+    transition: all .2s ease-in-out;
+}
+
+p.card-text {
+    display: none;
+}
