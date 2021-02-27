@@ -1,0 +1,48 @@
+.spot-body {
+    /* background-color: aqua; */
+    /* display: flex;
+    flex-direction: row; */
+    border: solid black 2px;
+}
+
+.spot-image-and-info {
+    display: flex;
+    justify-content: space-between;
+    /* height: 50%; */
+}
+
+.spot-image {
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    max-height: 800px;
+}
+
+.spot-image img {
+    width: 80%;
+    height: 80%;
+}
+
+.spot-info {
+    border: solid red 2px;
+    width: 60%;
+    /* display: flex; */
+}
+
+.spot-donate-and-book {
+    border: solid green 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 5rem;
+}
+
+.spot-donate {
+    border: solid red 2px;
+    width: 50%;
+}
+
+.spot-book {
+    border: solid blue 2px;
+    width: 50%;
+}
