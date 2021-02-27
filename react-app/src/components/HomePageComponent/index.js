@@ -5,13 +5,17 @@ import { getTopAvailableSpots } from "../../store/spot";
 import { googleApiKey } from "../GoogleMapsComponent/apikey";
 import SearchBar from "../SearchComponent/SearchBar";
 import SpotViewMini from "../SpotComponent/SpotViewMini";
-import "./home-page.css";
 import { WrappedGoogleMap } from "../GoogleMapsComponent/index";
+import LoginModal from "../auth/LoginForm";
+import SignUpModal from "../auth/SignUpForm";
 
-const HomePageComponent = () => {
+import "./home-page.css";
+
+const HomePageComponent = (props) => {
   const dispatch = useDispatch();
-
-  const [location, setLocation] = useState({});
+  const { authenticated, setAuthenticated } = props
+  const [showLogin, setShowLogin] = useState(false)
+  const [showSignUp, setShowSignUp] = useState(false)
 
   const available_spots = useSelector((state) => state.spots.available_spots);
 
@@ -21,9 +25,8 @@ const HomePageComponent = () => {
 
   return (
     <div className="home-body">
-      {/* <div className='home-search-alt'>
-        <SearchBar />
-      </div> */}
+      <LoginModal show={showLogin} onHide={() => setShowLogin(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+      <SignUpModal show={showSignUp} onHide={() => setShowSignUp(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
       <div className="home-search">
         <SearchBar />
       </div>
@@ -36,6 +39,8 @@ const HomePageComponent = () => {
         <div className='picture-color' />
       </div>
       <hr style={{ width: "80%" }}></hr>
+      <button onClick={() => setShowLogin(true)}>open login modal</button>
+      <button onClick={() => setShowSignUp(true)}>open signup modal</button>
       <h1>Experience a spot</h1>
       <div className="newest-spots-container">
         {available_spots &&
