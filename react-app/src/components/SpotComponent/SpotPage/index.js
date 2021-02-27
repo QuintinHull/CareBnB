@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { useSelector, useDispatch } from "react-redux"
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import { getSpot } from "../../../store/spot"
+import BookingPageComponent from "../../BookingPageComponent/index";
+import FundingComponent from "../../FundingComponent/index"
+import "./SpotPage.css"
+import { getSpot } from "../../../store/spot";
 
 
 const SpotPage = () => {
@@ -19,16 +22,42 @@ const SpotPage = () => {
 
     return (
         <>
-            <div className = "spot-body">
+            <div className = "spot-container">
                 {spotSelector.spot && (
-                    <>
-                        <h2>{spotSelector.spot.title}</h2>
-                        <h3>{spotSelector.spot.city}, {spotSelector.spot.state}</h3>
-                        <img src={spotSelector.spot.image_url} alt="Spot Image"/>
-                        <h4>{spotSelector.spot.description}</h4>
-                        <h4>Max Capacity: {spotSelector.spot.capacity}</h4>
-                        <h4>Current Availability: {spotSelector.spot.availability}</h4>
-                    </>
+                    <div className="spot-body">
+                        <div className="spot-image-and-info">
+                            <div className="spot-image">
+                                <img src={spotSelector.spot.image_url} alt="Spot Image"></img>
+                            </div>
+                            <div className="spot-info">
+                                    <h3>{spotSelector.spot.title}</h3>
+                                    <h3>{spotSelector.spot.city}, {spotSelector.spot.state}</h3>
+                                    <h3>{spotSelector.spot.description}</h3>
+                                    <h3>Max Capacity: {spotSelector.spot.capacity}</h3>
+                                    <h3>Current Availability: {spotSelector.spot.availability}</h3>
+                                    <div className="spot-donate-and-book">
+                                        <div className="spot-donate">
+                                            <FundingComponent />
+                                        </div>
+                                        <div className="spot-book">
+                                            <BookingPageComponent />
+                                    </div>
+                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        // <img className="spot-image" src={spotSelector.spot.image_url} alt="Spot Image" rounded></img>
+                        //     <div className="spot-title">{spotSelector.spot.title}</div>
+                        //         <div className="spot-city">{spotSelector.spot.city}, {spotSelector.spot.state}</div>
+                        //             <div className="spot-description">{spotSelector.spot.description}</div>
+                        //                 <div className="spot-capacity">Max Capacity: {spotSelector.spot.capacity}</div>
+                        //                     <div className="spot-availability">Current Availability: {spotSelector.spot.availability}</div>
+                        // <div className="booking-component-container">
+                        //             <BookingPageComponent />
+                        //             <FundingComponent />
+                        // </div>
+                    
                 )}
             </div>
         </>
