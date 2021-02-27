@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import SpotViewMini from "../SpotComponent/SpotViewMini";
 import {
   GoogleMap,
   withScriptjs,
@@ -11,6 +12,7 @@ import Geolocation from "@react-native-community/geolocation";
 import mapStyles from "./mapStyles";
 import { getSpots } from "../../store/spot";
 import { NavLink } from "react-router-dom";
+import "./GoogleMap.css"
 
 const GoogleMapsComponent = () => {
   const allSpots = useSelector((state) => state.spots.all_spots);
@@ -50,8 +52,8 @@ const GoogleMapsComponent = () => {
               setSelectedPark(null);
             }}
           >
-            <NavLink to={`spot/${selectedPark.id}`}>
-              Availability: {selectedPark.availability}
+            <NavLink className="spot-view-map" to={`spot/${selectedPark.id}`}>
+              <SpotViewMini spot={selectedPark} />
             </NavLink>
           </InfoWindow>
         )}
