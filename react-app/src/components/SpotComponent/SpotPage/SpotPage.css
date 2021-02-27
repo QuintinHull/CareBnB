@@ -14,13 +14,14 @@
 .spot-image {
     display: flex;
     justify-content: center;
-    max-width: 800px;
-    max-height: 800px;
+    /* max-width: 800px;
+    max-height: 800px; */
 }
 
 .spot-image img {
-    width: 80%;
-    height: 80%;
+    width: 600px;
+    height: 450px;
+    object-fit: cover;
 }
 
 .spot-info {
