@@ -19,7 +19,7 @@
 @media screen and (max-width: 1250px) {
     .home-search {
         position: fixed;
-        z-index: 1000;
+        z-index: 2;
         top: 90px;
         width: 100%;
     }
@@ -29,6 +29,11 @@
         border-radius: 0;
         background-color: #E2DADB;
     }
+}
+
+.search-container {
+    /* display: relative; */
+    top: -500px;
 }
 
 #namaste {
@@ -96,9 +101,9 @@
     height: 500px;
     width: 100%;
     position: relative;
-    z-index: -1;
     top: -30px;
 }
+
 
 .newest-spots-container {
     width: 100%;
@@ -107,7 +112,6 @@
     overflow-x: scroll;
     margin: 50px 20px;
 }
-
 .newest-spots-container .spotcard {
     background-color: #DAE2DF;
     padding: 20px;

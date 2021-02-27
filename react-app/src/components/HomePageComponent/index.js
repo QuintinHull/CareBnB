@@ -14,8 +14,6 @@ import "./home-page.css";
 const HomePageComponent = (props) => {
   const dispatch = useDispatch();
   const { authenticated, setAuthenticated } = props
-  const [showLogin, setShowLogin] = useState(false)
-  const [showSignUp, setShowSignUp] = useState(false)
 
   const available_spots = useSelector((state) => state.spots.available_spots);
 
@@ -25,22 +23,21 @@ const HomePageComponent = (props) => {
 
   return (
     <div className="home-body">
-      <LoginModal show={showLogin} onHide={() => setShowLogin(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
-      <SignUpModal show={showSignUp} onHide={() => setShowSignUp(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
-      <div className="home-search">
-        <SearchBar />
-      </div>
+
       <div className="welcome-search-container">
         <img
           src="https://img.gtsstatic.net/reno/imagereader.aspx?imageurl=https%3A%2F%2Fsir.azureedge.net%2F1103i215%2Fnxq8pmpbs8dwmpeg75kk15z4f1i215&option=N&idlisting=listingmedia&w=1600&permitphotoenlargement=false&fallbackimageurl=https%3A%2F%2Fstatic-sir-pacific-production-4.gtsstatic.net%2Fresources%2F_responsive%2Fimages%2Fcommon%2Fnophoto%2Flisting.jpg"
           alt=""
           className="welcome-image"
         ></img>
+        <div>
+        </div>
         <div className='picture-color' />
       </div>
+      <div className="home-search">
+        <SearchBar />
+      </div>
       <hr style={{ width: "80%" }}></hr>
-      <button onClick={() => setShowLogin(true)}>open login modal</button>
-      <button onClick={() => setShowSignUp(true)}>open signup modal</button>
       <h1>Experience a spot</h1>
       <div className="newest-spots-container">
         {available_spots &&
