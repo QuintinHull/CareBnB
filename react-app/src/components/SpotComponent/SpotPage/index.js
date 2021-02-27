@@ -30,18 +30,23 @@ const SpotPage = () => {
                                 <img src={spotSelector.spot.image_url} alt="Spot Image"></img>
                             </div>
                             <div className="spot-info">
+                                <div className="spot-info-div">
                                     <h3>{spotSelector.spot.title}</h3>
+                                    <hr className="spot-hr"></hr>
                                     <h3>{spotSelector.spot.city}, {spotSelector.spot.state}</h3>
+                                    <hr className="spot-hr"></hr>
                                     <h3>{spotSelector.spot.description}</h3>
+                                    <hr className="spot-hr"></hr>
                                     <h3>Max Capacity: {spotSelector.spot.capacity}</h3>
                                     <h3>Current Availability: {spotSelector.spot.availability}</h3>
-                                    <div className="spot-donate-and-book">
-                                        <div className="spot-donate">
-                                            <FundingComponent />
-                                        </div>
-                                        <div className="spot-book">
-                                            <BookingPageComponent />
+                                </div>
+                                <div className="spot-donate-and-book">
+                                    <div className="spot-donate">
+                                        <FundingComponent />
                                     </div>
+                                    <div className="spot-book">
+                                        <BookingPageComponent />
+                                </div>
                         </div>
                             </div>
                         </div>

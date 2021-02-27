@@ -2,7 +2,10 @@
     /* background-color: aqua; */
     /* display: flex;
     flex-direction: row; */
-    border: solid black 2px;
+    /* border: solid black 2px; */
+    margin: 20px;
+    background-color: #dae2df;
+    border-radius: 10px;
 }
 
 .spot-image-and-info {
@@ -16,34 +19,61 @@
     justify-content: center;
     /* max-width: 800px;
     max-height: 800px; */
+    margin: auto;
 }
 
 .spot-image img {
     width: 600px;
     height: 450px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .spot-info {
-    border: solid red 2px;
+    /* border: solid red 2px; */
     width: 60%;
     /* display: flex; */
 }
 
+.spot-info-div {
+    margin-top: 55px;;
+}
+
+.spot-info h3 {
+    margin-left: 110px;
+}
+
 .spot-donate-and-book {
-    border: solid green 2px;
+    /* border: solid black 2px; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     margin-top: 5rem;
 }
 
 .spot-donate {
-    border: solid red 2px;
-    width: 50%;
+    /* border: solid red 2px; */
+    width: 48%;
+    background-color: #a2a7a5;
+    /* border: solid black 2px; */
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: 55px;
+    padding: 5px;
 }
 
 .spot-book {
-    border: solid blue 2px;
-    width: 50%;
+    /* border: solid blue 2px; */
+    width: 48%;
+    background-color: #a2a7a5;
+    /* border: solid black 2px; */
+    /* margin-left: 30px; */
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 55px;
+    padding: 5px;
+}
+
+.spot-hr {
+    width: 80%;
 }
