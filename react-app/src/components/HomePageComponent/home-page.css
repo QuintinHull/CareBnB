@@ -101,16 +101,24 @@
 }
 
 .newest-spots-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* overflow-x: scroll; */
-    /* align-items: center; */
-    margin: 0px 30px;
-    /* height: 650px; */
     width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    margin: 50px 0px;
+    margin-right: 50px;
 }
+
+.newest-spots-container .spotcard {
+    background-color: #DAE2DF;
+    padding: 20px;
+    margin: 10px;
+    min-width: 300px;
+    max-width: 300px;
+    box-shadow: 0 1px 5px #A2A7A5;
+    transition: all .2s ease-in-out;
+}
+
 
 .mission-container {
     display: grid;

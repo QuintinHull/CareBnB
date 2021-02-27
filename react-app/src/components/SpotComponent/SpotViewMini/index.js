@@ -26,8 +26,8 @@ const SpotViewMini = ({ spot }) => {
     //   <h4>{spot.availability}</h4>
     // </div>
 
-    <Card style={{ width: '18rem' }} className='spotcard mx-5'>
-      <Card.Img variant="top" src={spot.image_url}  style={{ height: '12rem' }}/>
+    <Card className='spotcard mx-5'>
+      <Card.Img variant="top" src={spot.image_url} style={{ height: '12rem' }} />
       <br></br>
       <Card.Title>{spot.title}</Card.Title>
       <Card.Text>{spot.description}</Card.Text>

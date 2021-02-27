@@ -31,10 +31,11 @@
 }
 
 .search-results-container .spotcard {
-    background-color: #DAE2DF;
+    background-color: #A2A7A5;
     padding: 20px;
     margin: 10px;
     min-width: 300px;
+    max-width: 300px;
     box-shadow: 0 1px 5px #A2A7A5;
     transition: all .2s ease-in-out;
 }
