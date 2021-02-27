@@ -9,6 +9,6 @@
     transition: all .2s ease-in-out;
 }
 
-p.card-text {
+.spot-view-map p.card-text {
     display: none;
 }

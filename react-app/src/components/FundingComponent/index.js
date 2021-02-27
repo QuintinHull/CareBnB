@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Button from 'react-bootstrap/Button'
 import * as fundingActions from "../../store/funding";
 
 
@@ -42,7 +43,7 @@ const FundingComponent = ({ authenticated }) => {
         />
       </div>
       <div>
-        <button type="submit">Donate!</button>
+        <Button type="submit" variant="secondary" size="sm">Donate!</Button>
       </div>
     </form>
   );
