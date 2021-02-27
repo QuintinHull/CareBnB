@@ -43,18 +43,18 @@ const GoogleMapsComponent = () => {
             }}
           />
         ))}
-      {selectedPark && (
-        <InfoWindow
-          position={{ lat: selectedPark.latitude, lng: selectedPark.longitude }}
-          onCloseClick={() => {
-            setSelectedPark(null);
-          }}
-        >
-          <NavLink to={`spot/${selectedPark.id}`}>
-            Availability: {selectedPark.availability}
-          </NavLink>
-        </InfoWindow>
-      )}
+        {selectedPark && (
+          <InfoWindow
+            position={{ lat: selectedPark.latitude, lng: selectedPark.longitude }}
+            onCloseClick={() => {
+              setSelectedPark(null);
+            }}
+          >
+            <NavLink to={`spot/${selectedPark.id}`}>
+              Availability: {selectedPark.availability}
+            </NavLink>
+          </InfoWindow>
+        )}
     </GoogleMap>
   );
 };
