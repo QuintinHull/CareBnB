@@ -105,8 +105,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: scroll;
-    margin: 50px 0px;
-    margin-right: 50px;
+    margin: 50px 20px;
 }
 
 .newest-spots-container .spotcard {
