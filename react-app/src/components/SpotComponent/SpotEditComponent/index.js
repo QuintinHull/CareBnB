@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom"
-import { deleteSpot } from "../../store/spot";
+import { deleteSpot } from "../../../store/spot";
 
 
 
-const SpotEditForm = ({ spot }) => {
+const SpotEditComponent = ({ spot }) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -34,4 +34,4 @@ const SpotEditForm = ({ spot }) => {
   )
 }
 
-export default SpotEditForm;
+export default SpotEditComponent;
