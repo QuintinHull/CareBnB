@@ -7,28 +7,10 @@
     background-color: #ffff;
     border-radius: 2em;
     padding-top: 12px;
-    width: 750px;
+    min-width: 800px;
     box-shadow: 0 1px 2px #A2A7A5;
+    position: relative;
 }
-
-
-/* @media screen and (min-width: 1200px) {
-.home-search  .search-bar-container {
-        display: flex;
-    }
-    .home-search-alt .search-bar-container{
-        display: none;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .home-search  .search-bar-container {
-        display: none;
-    }
-    .home-search-alt .search-bar-container{
-        display: flex;
-    }
-} */
 
 .search-bar-container::after {
     box-shadow: 0 5px 15px #4c4e4d;
@@ -60,7 +42,7 @@
     text-align: center;
 }
 
-.guest-input {
+.guest-input.input-group  {
     height: 35px;
     width: 50px;
     display: flex;
@@ -69,7 +51,7 @@
     margin: 0px 10px;
 }
 
-.city-input {
+.city-input.input-group {
     height: 35px;
     width: 300px;
     display: flex;

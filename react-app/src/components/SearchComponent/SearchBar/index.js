@@ -6,8 +6,8 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button';
 import { ArrowRightCircleFill } from 'react-bootstrap-icons';
-import { Link, useHistory } from 'react-router-dom';
-import { getSpots } from '../../../store/spot';
+import { Redirect, useHistory } from 'react-router-dom';
+import { getSpots, searchSpots } from '../../../store/spot';
 
 import './search-bar.css'
 
@@ -56,6 +56,7 @@ const SearchBar = () => {
 
 
     const executeSearch = (e) => {
+        dispatch(searchSpots(guestCount, location))
         return history.push(`/locate?city=${location}&guest=${guestCount}`)
     }
 

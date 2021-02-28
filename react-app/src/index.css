@@ -20,3 +20,10 @@ h3, h4, h5 {
 a, p, button, .btn, .card-title, label {
   font-family: 'Martel Sans';
 }
+
+
+.dropdown-menu.show {
+  position: absolute;
+  width: 350px;
+  left: -285px;
+}

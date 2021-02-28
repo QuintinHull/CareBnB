@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
-import LoginForm from "./components/auth/LoginForm";
-import SignUpForm from "./components/auth/SignUpForm";
+import LoginModal from "./components/auth/LoginForm";
+import SignUpModal from "./components/auth/SignUpForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -22,6 +22,8 @@ const store = configureStore();
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [showLogin, setShowLogin] = useState(false)
+  const [showSignUp, setShowSignUp] = useState(false)
 
   useEffect(() => {
     (async () => {
@@ -40,12 +42,15 @@ function App() {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-        <NavBar setAuthenticated={setAuthenticated} />
+        <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
+        <LoginModal show={showLogin} onHide={() => setShowLogin(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        <SignUpModal show={showSignUp} onHide={() => setShowSignUp(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
         <Switch>
           <ProtectedRoute
             path="/users"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <UsersList />
           </ProtectedRoute>
@@ -53,13 +58,14 @@ function App() {
             path="/users/:userId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <User />
           </ProtectedRoute>
 
           {/* Home Page: */}
           <Route path='/' exact={true}>
-            <HomePage authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <HomePage authenticated={authenticated} setAuthenticated={setAuthenticated} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
           </Route>
 
           {/* testing spot create */}
@@ -67,6 +73,7 @@ function App() {
             path="/spot/create/"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SpotCreate />
           </ProtectedRoute>
@@ -76,6 +83,7 @@ function App() {
             path="/spot/:spotId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SpotPage />
           </ProtectedRoute>
@@ -85,6 +93,7 @@ function App() {
             path="/spot/book/:spotId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <BookingPageComponent />
           </ProtectedRoute>
@@ -94,6 +103,7 @@ function App() {
             path="/spot/fund/:spotId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <FundingComponent />
           </ProtectedRoute>
@@ -102,12 +112,14 @@ function App() {
           <ProtectedRoute
             path="/locate"
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SearchPage />
           </ProtectedRoute>
           <ProtectedRoute
             path='/locate'
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SearchPage />
           </ProtectedRoute>
