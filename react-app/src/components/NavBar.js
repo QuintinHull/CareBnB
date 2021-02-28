@@ -38,12 +38,15 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
             <NavLink to="/" exact={true} activeClassName="active">
               Home
             </NavLink>
-            <NavLink to="/">
-              Manage Spots
+            {authenticated == true && (
+              <>
+                <NavLink to="/">
+                  Manage Spots
             </NavLink>
-            <NavLink to="/">
-              Account
+                <NavLink to="/">
+                  Account
             </NavLink>
+              </>)}
             <NavLink to="/">
               FAQ
             </NavLink>
@@ -63,7 +66,7 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
           {authenticated === true && (
             <>
               <NavDropdown.Item>
-                <h1>Welcome Mustafa</h1>
+                <h1>Welcome user</h1>
               </NavDropdown.Item>
               <NavDropdown.Item>
                 <LogoutButton setAuthenticated={setAuthenticated} />

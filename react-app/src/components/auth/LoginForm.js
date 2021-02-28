@@ -20,6 +20,16 @@ const LoginModal = (props) => {
     }
   };
 
+  const onDemoLogin = async (e) => {
+    e.preventDefault();
+    const user = await login('demo@aa.io', 'password');
+    if (!user.errors) {
+      setAuthenticated(true);
+    } else {
+      setErrors(user.errors);
+    }
+  };
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -70,7 +80,8 @@ const LoginModal = (props) => {
               value={password}
               onChange={updatePassword}
             />
-            <button type="submit">Login</button>
+            <Button type="submit">Login</Button>
+            <Button onClick={onDemoLogin}>Demo</Button>
           </div>
         </form>
       </Modal.Body>

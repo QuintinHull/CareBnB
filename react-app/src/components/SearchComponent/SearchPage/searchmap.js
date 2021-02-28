@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
 import { NavLink } from 'react-router-dom';
 import SpotViewMini from '../../SpotComponent/SpotViewMini';
+import mapStyles from '../../GoogleMapsComponent/mapStyles';
 
 const MySearchMap = withScriptjs(withGoogleMap((props) => {
     const { position, allSpots, selectedPark, setSelectedPark } = props;
-    // const [selectedPark, setSelectedPark] = useState(null)
 
 
     return (
         <GoogleMap
             defaultZoom={15}
             defaultCenter={position}
+            defaultOptions={{ styles: mapStyles }}
             position={position}
         >
             {allSpots &&

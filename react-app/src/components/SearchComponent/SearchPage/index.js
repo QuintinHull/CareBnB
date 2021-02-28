@@ -7,6 +7,7 @@ import { useLocation } from 'react-router-dom';
 
 import { googleApiKey } from '../../GoogleMapsComponent/apikey'
 import SpotViewMini from '../../SpotComponent/SpotViewMini'
+import SearchBar from '../SearchBar'
 import { searchSpots } from '../../../store/spot';
 import MySearchMap from './searchmap';
 import './search-page.css';
@@ -21,9 +22,6 @@ const SearchPage = () => {
 
     const spots_state = useSelector(state => state.spots.searched_spots)
 
-    useEffect(() => {
-        console.log(selectedSpot)
-    }, [selectedSpot])
 
     useEffect(() => {
         dispatch(searchSpots(guest, city))
@@ -56,13 +54,13 @@ const SearchPage = () => {
             <div className='search-header'>
                 {<h1>Spots available to book in '{city}' for {guest} {grammar(guest)} </h1>}
             </div>
-            <div className='search-controls-container'>
-                <Button>Change city: '{city}' {downCirc()}</Button>
-                <Button>Change guest count: {guest}  {downCirc()}</Button>
+            <div className='search-controls-container' style={{ display: 'flex', justifyContent: 'center' }}>
+                <SearchBar />
             </div>
             <hr style={{ width: '100%' }}></hr>
             <div className='results-map-container'>
                 <div className='search-results-container'>
+                    {spots_state && spots_state.length === 0 && <h2>Please alter your search</h2>}
                     {handleSearch(spots_state)}
                 </div>
                 <div className='google-map'>
@@ -71,7 +69,7 @@ const SearchPage = () => {
                         loadingElement={<div style={{ height: "400px" }} />}
                         containerElement={<div style={{ height: "800px" }} />}
                         mapElement={<div style={{ height: "750px" }} />}
-                        position={{ lat: spots_state[selectedSpot].latitude, lng: spots_state[selectedSpot].longitude }}
+                        position={spots_state[selectedSpot] ? { lat: spots_state[selectedSpot].latitude, lng: spots_state[selectedSpot].longitude } : { lat: 20, lng: 20 }}
                         allSpots={spots_state}
                         selectedPark={selectedPark}
                         setSelectedPark={setSelectedPark}

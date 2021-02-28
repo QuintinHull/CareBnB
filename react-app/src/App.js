@@ -50,6 +50,7 @@ function App() {
             path="/users"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <UsersList />
           </ProtectedRoute>
@@ -57,13 +58,14 @@ function App() {
             path="/users/:userId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <User />
           </ProtectedRoute>
 
           {/* Home Page: */}
           <Route path='/' exact={true}>
-            <HomePage authenticated={authenticated} setAuthenticated={setAuthenticated} />
+            <HomePage authenticated={authenticated} setAuthenticated={setAuthenticated} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
           </Route>
 
           {/* testing spot create */}
@@ -71,6 +73,7 @@ function App() {
             path="/spot/create/"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SpotCreate />
           </ProtectedRoute>
@@ -80,6 +83,7 @@ function App() {
             path="/spot/:spotId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SpotPage />
           </ProtectedRoute>
@@ -89,6 +93,7 @@ function App() {
             path="/spot/book/:spotId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <BookingPageComponent />
           </ProtectedRoute>
@@ -98,6 +103,7 @@ function App() {
             path="/spot/fund/:spotId"
             exact={true}
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <FundingComponent />
           </ProtectedRoute>
@@ -106,12 +112,14 @@ function App() {
           <ProtectedRoute
             path="/locate"
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SearchPage />
           </ProtectedRoute>
           <ProtectedRoute
             path='/locate'
             authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
           >
             <SearchPage />
           </ProtectedRoute>
