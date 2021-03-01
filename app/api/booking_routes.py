@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from ..forms import BookingForm
-from app.models import User_Book_Spot
+from app.models import User_Book_Spot, Spot
 from app.models.db import db
 
 
@@ -25,6 +25,8 @@ def add_booking(spot_id):
     form = BookingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
+        spot = Spot.query.get(spot_id)
+        spot.availability -= form.data["group_size"]
         booking = User_Book_Spot(
             spots_id=spot_id,
             guest_id=current_user.id,

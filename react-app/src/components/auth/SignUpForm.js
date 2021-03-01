@@ -156,7 +156,7 @@ const SignUpModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={onSignUp}>
+        <form onSubmit={onSignUp} style={{ textAlign: 'center' }}>
           <div>
             <label>First Name</label>
             <input
@@ -203,7 +203,10 @@ const SignUpModal = (props) => {
               required={true}
             ></input>
           </div>
-          <button type="submit">Sign Up</button>
+          <div>
+            <Button type="submit">Sign Up</Button>
+          </div>
+
         </form>
       </Modal.Body>
       <Modal.Footer>

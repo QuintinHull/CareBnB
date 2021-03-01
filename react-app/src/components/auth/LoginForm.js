@@ -55,7 +55,7 @@ const LoginModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={onLogin}>
+        <form onSubmit={onLogin} style={{ textAlign: 'center' }}>
           <div>
             {errors.map((error) => (
               <div>{error}</div>
@@ -80,6 +80,8 @@ const LoginModal = (props) => {
               value={password}
               onChange={updatePassword}
             />
+          </div>
+          <div>
             <Button type="submit">Login</Button>
             <Button onClick={onDemoLogin}>Demo</Button>
           </div>
