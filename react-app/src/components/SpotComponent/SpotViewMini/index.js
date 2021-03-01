@@ -1,10 +1,11 @@
 import React from "react";
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
-// import { test } from 'react-bootstrap-icons';
 import './SpotViewMini.css'
 
 const SpotViewMini = ({ spot }) => {
+  const history = useHistory();
   // const test_spot = {
   //   image_url:'https://i.ytimg.com/vi/tiZ8u6PNTK8/maxresdefault.jpg',
   //   image_url2:'https://upload.wikimedia.org/wikipedia/commons/1/15/Mount_Massive.jpg',
@@ -34,6 +35,7 @@ const SpotViewMini = ({ spot }) => {
       <Card.Text className="text-muted text-right">
         <ul>{spot.city}, {spot.state}</ul>
         <ul>availability: {spot.availability}</ul>
+        <Button onClick={() => { history.push(`/spot/${spot.id}`) }}>Book</Button>
       </Card.Text>
     </Card>
   );
