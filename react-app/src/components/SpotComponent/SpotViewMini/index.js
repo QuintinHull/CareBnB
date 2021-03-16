@@ -35,7 +35,7 @@ const SpotViewMini = ({ spot }) => {
       <Card.Text className="text-muted text-right">
         <ul>{spot.city}, {spot.state}</ul>
         <ul>availability: {spot.availability}</ul>
-        <Button onClick={() => { history.push(`/spot/${spot.id}`) }}>Book</Button>
+        <Button onClick={() => { history.push(`/spot/${spot.id}`) }}>Explore</Button>
       </Card.Text>
     </Card>
   );
