@@ -74,7 +74,6 @@ const SearchPage = () => {
                         selectedPark={selectedPark}
                         setSelectedPark={setSelectedPark}
                     />}
-                    {spots_state && console.log(spots_state)}
                 </div>
             </div>
 
