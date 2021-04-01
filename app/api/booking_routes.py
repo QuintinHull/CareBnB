@@ -27,6 +27,7 @@ def add_booking(spot_id):
     if form.validate_on_submit():
         spot = Spot.query.get(spot_id)
         spot.availability -= form.data["group_size"]
+        # logic to prevent availability under zero to book
         booking = User_Book_Spot(
             spots_id=spot_id,
             guest_id=current_user.id,

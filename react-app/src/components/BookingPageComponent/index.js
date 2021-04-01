@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button'
 import * as bookingActions from "../../store/booking";
@@ -7,6 +7,7 @@ import * as bookingActions from "../../store/booking";
 
 const BookingPageComponent = ({ authenticated }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const spotId = Number.parseInt(useParams().spotId);
 
   const [errors, setErrors] = useState([]);
@@ -20,7 +21,7 @@ const BookingPageComponent = ({ authenticated }) => {
   const onBookingSubmit = async (e) => {
     e.preventDefault();
     dispatch(bookingActions.addBooking({spotId, group_size}))
-    // Redirect('/')
+    history.push("/")
   }
  
 
