@@ -10,7 +10,6 @@ spot_routes = Blueprint('spots', __name__)
 @spot_routes.route('/')
 def all_spots():
     spots = Spot.query.all()
-    print('current_user.id', current_user.id)
     return {"all_spots": {spot.id: spot.to_dict() for spot in spots}}
 
 
@@ -18,7 +17,6 @@ def all_spots():
 def create_spot():
     form = SpotForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data["capacity"])
     if form.validate_on_submit():
         spot = Spot(
             image_url=form.data['image_url'],

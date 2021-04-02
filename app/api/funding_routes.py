@@ -6,6 +6,7 @@ from app.models.db import db
 
 funding_routes = Blueprint('fundings', __name__)
 
+
 @funding_routes.route("/")
 def all_fundings():
     fundings = Funding.query.filter(Funding.user_id == current_user.id).all()
@@ -21,7 +22,7 @@ def create_funding(spot_id):
             user_id=current_user.id,
             spots_id=spot_id,
             sponsorship_cost=form.data["sponsorship_cost"])
-        
+
         db.session.add(funding)
         db.session.commit()
         return {'funding': {funding.id: funding.to_dict()}}
@@ -29,9 +30,10 @@ def create_funding(spot_id):
         return "Bad Data"
 
 # TODO: FIGURE OUT BUG THAT CAUSES FUNDING TO BE NONE
+
+
 @funding_routes.route("/<id>")
 def get_specific_fundings(id):
     funding = Funding.query.get(id)
     # funding = Funding.query.filter(Funding.id == id).first()
-    print(funding)
     return {'funding': {funding.id: funding.to_dict()}}
