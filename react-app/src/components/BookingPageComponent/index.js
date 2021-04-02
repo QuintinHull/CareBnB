@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import * as bookingActions from "../../store/booking";
 
 
-const BookingPageComponent = ({ authenticated, spotTitle }) => {
+const BookingPageComponent = ({ authenticated, spotTitle, spotAvailability }) => {
   const dispatch = useDispatch();
   const history = useHistory()
   const spotId = Number.parseInt(useParams().spotId);
@@ -20,6 +20,7 @@ const BookingPageComponent = ({ authenticated, spotTitle }) => {
 
   const onBookingSubmit = async (e) => {
     e.preventDefault();
+
     dispatch(bookingActions.addBooking({spotId, group_size}))
     window.alert(`Thank you for booking your stay at, ${spotTitle}!`)
     history.push("/")
@@ -44,9 +45,16 @@ const BookingPageComponent = ({ authenticated, spotTitle }) => {
           onChange={updateGroupsize}
         />
       </div>
-      <div>
-        <Button type="submit" variant="secondary" size="sm">Book!</Button>
-      </div>
+
+        <div>
+          {spotAvailability <= 0 && 
+            <p>No more spots</p>
+          }
+          {spotAvailability > 0 && 
+            <Button type="submit" variant="secondary" size="sm">Book!</Button>
+          }
+        </div>
+
     </form>
   );
 };

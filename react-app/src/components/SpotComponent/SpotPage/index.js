@@ -12,6 +12,7 @@ const SpotPage = () => {
     const dispatch = useDispatch()
     const spotId = Number.parseInt(useParams().spotId)
     const spotSelector = useSelector(state => state.spots)
+    const spotAvailability = useSelector(state => state.spots.availability)
     // const spotTitle = spotSelector.spot.title
 
     const [spotState, setSpotState] = useState("")
@@ -46,7 +47,7 @@ const SpotPage = () => {
                                         <FundingComponent />
                                     </div>
                                     <div className="spot-book">
-                                        <BookingPageComponent spotTitle = {spotSelector.spot.title}/>
+                                        <BookingPageComponent spotAvailability = {spotSelector.spot.availability} spotTitle = {spotSelector.spot.title}/>
                                 </div>
                         </div>
                             </div>
