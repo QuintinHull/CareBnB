@@ -16,6 +16,8 @@ import BookingPageComponent from "./components/BookingPageComponent";
 import FundingComponent from "./components/FundingComponent";
 import SearchPage from "./components/SearchComponent/SearchPage";
 import SpotCreate from "./components/SpotComponent/SpotCreate";
+import SpotEditComponent from "./components/SpotComponent/SpotEditComponent"
+import SpotDelete from "./components/SpotComponent/SpotDelete"
 
 const store = configureStore();
 
@@ -122,6 +124,16 @@ function App() {
             setShowSignUp={setShowSignUp}
           >
             <SearchPage />
+          </ProtectedRoute>
+
+           {/* Delete Spot Page */}
+          <ProtectedRoute
+            path="/spot/delete/:spotId"
+            exact={true}
+            authenticated={authenticated}
+            setShowSignUp={setShowSignUp}
+          >
+            <SpotDelete />
           </ProtectedRoute>
         </Switch>
       </BrowserRouter>
