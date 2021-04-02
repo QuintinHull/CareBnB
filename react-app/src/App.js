@@ -16,6 +16,7 @@ import BookingPageComponent from "./components/BookingPageComponent";
 import FundingComponent from "./components/FundingComponent";
 import SearchPage from "./components/SearchComponent/SearchPage";
 import SpotCreate from "./components/SpotComponent/SpotCreate";
+import FooterComponent from "./components/FooterComponent"
 
 const store = configureStore();
 
@@ -124,6 +125,7 @@ function App() {
             <SearchPage />
           </ProtectedRoute>
         </Switch>
+        <FooterComponent />
       </BrowserRouter>
     </ReduxProvider>
   );
