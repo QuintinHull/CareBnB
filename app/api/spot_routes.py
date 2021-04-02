@@ -54,7 +54,7 @@ def single_spot(id):
 
 @spot_routes.route('/top-available')
 def available_spots():
-    spots = Spot.query.order_by(Spot.availability.desc()).limit(10)
+    spots = Spot.query.filter(Spot.availability > 0).order_by(Spot.availability.desc()).limit(10)
     return {'available_spots': [spot.to_dict() for spot in spots]}
 
 

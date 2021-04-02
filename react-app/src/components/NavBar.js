@@ -1,10 +1,12 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import { PersonCircle } from "react-bootstrap-icons";
 
 const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }) => {
+
+  const history = useHistory()
   return (
     <Navbar
       style={{ height: 90, backgroundColor: "#E2DADB" }}
@@ -26,15 +28,18 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
       </Nav>
       <Nav className="w-30 p-0">
         <Nav className="my-auto mr-3">
-          <NavLink to="/spot/create">Host a Spot</NavLink>
+          <Button onClick={(event) => history.push("/spot/create")}>Host a Spot</Button>
         </Nav>
-        <NavDropdown
+        <Nav className="my-auto mr-3">
+          <LogoutButton setAuthenticated={setAuthenticated} />
+        </Nav>
+        {/* <NavDropdown
           title={<PersonCircle size={30} />}
           id="basic-nav-dropdown"
           className="dropbottom"
           style={{ zIndex: 1400 }}
-        >
-          <NavDropdown.Item style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        > */}
+          {/* <NavDropdown.Item style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
             <NavLink to="/" exact={true} activeClassName="active">
               Home
             </NavLink>
@@ -61,9 +66,9 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
                 <Button onClick={() => setShowSignUp(true)}>Sign Up</Button>
               </NavDropdown.Item>
               {/* <NavDropdown.Divider /> */}
-            </>
-          )}
-          {authenticated === true && (
+            {/* </>
+          )} */}
+          {/* {authenticated === true && (
             <>
               <NavDropdown.Item>
                 <h1>Welcome user</h1>
@@ -73,7 +78,7 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
               </NavDropdown.Item>
             </>
           )}
-        </NavDropdown>
+        </NavDropdown> */}
       </Nav>
     </Navbar >
   );

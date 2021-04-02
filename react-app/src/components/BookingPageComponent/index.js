@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Button from 'react-bootstrap/Button'
 import * as bookingActions from "../../store/booking";
 
 
-const BookingPageComponent = ({ authenticated }) => {
+const BookingPageComponent = ({ authenticated, spotTitle, spotAvailability }) => {
   const dispatch = useDispatch();
+  const history = useHistory()
   const spotId = Number.parseInt(useParams().spotId);
 
   const [errors, setErrors] = useState([]);
@@ -19,8 +20,10 @@ const BookingPageComponent = ({ authenticated }) => {
 
   const onBookingSubmit = async (e) => {
     e.preventDefault();
+
     dispatch(bookingActions.addBooking({spotId, group_size}))
-    // Redirect('/')
+    window.alert(`Thank you for booking your stay at, ${spotTitle}!`)
+    history.push("/")
   }
  
 
@@ -42,9 +45,16 @@ const BookingPageComponent = ({ authenticated }) => {
           onChange={updateGroupsize}
         />
       </div>
-      <div>
-        <Button type="submit" variant="secondary" size="sm">Book!</Button>
-      </div>
+
+        <div>
+          {spotAvailability <= 0 && 
+            <p>No more spots</p>
+          }
+          {spotAvailability > 0 && 
+            <Button type="submit" variant="secondary" size="sm">Book!</Button>
+          }
+        </div>
+
     </form>
   );
 };
