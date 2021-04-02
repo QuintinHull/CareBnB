@@ -60,11 +60,26 @@ const SearchBar = () => {
         return history.push(`/locate?city=${location}&guest=${guestCount}`)
     }
 
+    useEffect(() => {
+        document.getElementById("test-input").addEventListener("keyup", (e) => {
+            e.preventDefault()
+            if (e.keyCode === 13) {
+                return executeSearch(e)
+            }
+        })
+        document.getElementById("test-input2").addEventListener("keyup", (e) => {
+            e.preventDefault()
+            if (e.keyCode === 13) {
+                return executeSearch(e)
+            }
+        })
+    }, [location, guestCount])
+
     return (
         <div className='search-bar-container' id='search-bar-container-scrolled'>
             <form className='search-bar-form'>
                 <label >Where are you going?</label>
-                <InputGroup className="mb-3 city-input">
+                <InputGroup id="test-input" className="mb-3 city-input">
                     <FormControl
                         aria-label="City"
                         aria-describedby="inputGroup-sizing-default"
@@ -73,7 +88,7 @@ const SearchBar = () => {
                     />
                 </InputGroup>
                 <label >How many guests?</label>
-                <InputGroup className="mb-3 guest-input">
+                <InputGroup id="test-input2" className="mb-3 guest-input">
                     <FormControl
                         type="number"
                         aria-label="Guests"
