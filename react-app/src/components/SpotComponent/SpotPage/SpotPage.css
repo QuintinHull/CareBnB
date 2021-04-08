@@ -10,8 +10,16 @@
 
 .spot-image-and-info {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     /* height: 50%; */
+}
+
+@media(max-width:1015px) {
+    .spot-image-and-info {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .spot-image {
@@ -20,6 +28,7 @@
     /* max-width: 800px;
     max-height: 800px; */
     margin: auto;
+    padding: 10px 10px;
 }
 
 .spot-image img {

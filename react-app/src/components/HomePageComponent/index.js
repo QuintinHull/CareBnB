@@ -8,6 +8,7 @@ import SpotViewMini from "../SpotComponent/SpotViewMini";
 import { WrappedGoogleMap } from "../GoogleMapsComponent/index";
 import LoginModal from "../auth/LoginForm";
 import SignUpModal from "../auth/SignUpForm";
+import FooterComponent from "../FooterComponent"
 
 import "./home-page.css";
 import NewUser from "./newUser";
@@ -85,6 +86,7 @@ const HomePageComponent = (props) => {
           containerElement={<div style={{ height: "800px" }} />}
           mapElement={<div style={{ height: "800px" }} />}
         />
+        <FooterComponent />
       </div>
     </div >
   );

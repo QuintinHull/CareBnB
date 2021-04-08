@@ -16,7 +16,7 @@
     /* width: 80%; */
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1360px) {
     .home-search {
         position: fixed;
         z-index: 2;
@@ -81,6 +81,7 @@
 
 .home-body {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
