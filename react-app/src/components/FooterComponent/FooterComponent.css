@@ -1,5 +1,25 @@
 .footer {
-    height: 50px;
+    height: 70px;
     width: 100%;
-    background-color: blueviolet;
+    background-color: rgb(226, 218, 219);
+    display: flex;
+    justify-content: space-around;
+}
+
+.image_container {
+    margin:auto;
+}
+
+.pic {
+    /* width: 35px; */
+    height: 60px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.the_developers {
+    margin:auto;
+    font-family: 'Martel Sans';
+    font-weight: 900;
+    font-size: 20px;
 }

@@ -18,6 +18,7 @@ const LoginModal = (props) => {
     } else {
       setErrors(user.errors);
     }
+    window.location.reload(false)
   };
 
   const onDemoLogin = async (e) => {
