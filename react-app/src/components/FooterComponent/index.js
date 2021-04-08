@@ -36,7 +36,7 @@ const FooterComponent = () => {
                 <a href="https://github.com/Jummies">
                     <img className="pic" src="https://avatars.githubusercontent.com/u/74935506?s=400&u=c948c56b7e17b692ef7eb87d04ca46bfbad62c92&v=4" ></img>
                 </a>
-                <a href="https://www.linkedin.com/in/quintinhull92/">
+                <a href="https://www.linkedin.com/in/jung-park-7ab9501bb/">
                     {<img className="pic" src={`${imagePath}/linkedIn.png`} alt="github logo"></img>}
                 </a>
             </div>
