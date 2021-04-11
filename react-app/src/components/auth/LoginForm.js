@@ -10,6 +10,11 @@ const LoginModal = (props) => {
   const [password, setPassword] = useState("");
   const { authenticated, setAuthenticated } = props
 
+  const switchToSignup = () => {
+    props.setShowLogin(false);
+    props.setShowSignUp(true);
+  };
+
   const onLogin = async (e) => {
     e.preventDefault();
     const user = await login(email, password);
@@ -17,8 +22,8 @@ const LoginModal = (props) => {
       setAuthenticated(true);
     } else {
       setErrors(user.errors);
+      props.setShowLogin(true)
     }
-    window.location.reload(false)
   };
 
   const onDemoLogin = async (e) => {
@@ -56,8 +61,8 @@ const LoginModal = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form onSubmit={onLogin} style={{ textAlign: 'center' }}>
-          <div>
+        <form style={{ textAlign: 'center' }}>
+          <div style={{ color: "darkred" }}>
             {errors.map((error) => (
               <div>{error}</div>
             ))}
@@ -83,7 +88,8 @@ const LoginModal = (props) => {
             />
           </div>
           <div>
-            <Button type="submit">Login</Button>
+            <Button onClick={onLogin}>Login</Button>
+            <Button onClick={switchToSignup}>Switch to Sign up</Button>
             <Button onClick={onDemoLogin}>Demo</Button>
           </div>
         </form>
