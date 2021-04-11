@@ -1,12 +1,23 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Navbar, Nav, Button } from "react-bootstrap";
+
 import LogoutButton from "./auth/LogoutButton";
-import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
-import { PersonCircle } from "react-bootstrap-icons";
 
 const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }) => {
 
-  const history = useHistory()
+  const history = useHistory();
+
+  const hostASpot = (e) => {
+    e.preventDefault();
+
+    if (authenticated) {
+      history.push('/spot/create')
+    } else {
+      setShowSignUp(true)
+    }
+  };
+
   return (
     <Navbar
       style={{ height: 90, backgroundColor: "#E2DADB" }}
@@ -28,10 +39,15 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
       </Nav>
       <Nav className="w-30 p-0">
         <Nav className="my-auto mr-3">
-          <Button onClick={(event) => history.push("/spot/create")}>Host a Spot</Button>
+          <Button onClick={hostASpot}>Host a Spot</Button>
         </Nav>
+        {!authenticated && (
+          <Nav className="my-auto mr-3">
+            <Button onClick={() => setShowLogin(true)}>Log in</Button>
+          </Nav>
+        )}
         <Nav className="my-auto mr-3">
-          <LogoutButton setAuthenticated={setAuthenticated} />
+          {authenticated && <LogoutButton setAuthenticated={setAuthenticated} />}
         </Nav>
         {/* <NavDropdown
           title={<PersonCircle size={30} />}
@@ -39,7 +55,7 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
           className="dropbottom"
           style={{ zIndex: 1400 }}
         > */}
-          {/* <NavDropdown.Item style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+        {/* <NavDropdown.Item style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
             <NavLink to="/" exact={true} activeClassName="active">
               Home
             </NavLink>
@@ -66,9 +82,9 @@ const NavBar = ({ authenticated, setAuthenticated, setShowLogin, setShowSignUp }
                 <Button onClick={() => setShowSignUp(true)}>Sign Up</Button>
               </NavDropdown.Item>
               {/* <NavDropdown.Divider /> */}
-            {/* </>
+        {/* </>
           )} */}
-          {/* {authenticated === true && (
+        {/* {authenticated === true && (
             <>
               <NavDropdown.Item>
                 <h1>Welcome user</h1>

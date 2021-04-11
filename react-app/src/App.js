@@ -44,8 +44,8 @@ function App() {
     <ReduxProvider store={store}>
       <BrowserRouter>
         <NavBar authenticated={authenticated} setAuthenticated={setAuthenticated} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
-        <LoginModal show={showLogin} onHide={() => setShowLogin(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
-        <SignUpModal show={showSignUp} onHide={() => setShowSignUp(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} />
+        <LoginModal show={showLogin} onHide={() => setShowLogin(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
+        <SignUpModal show={showSignUp} onHide={() => setShowSignUp(false)} authenticated={authenticated} setAuthenticated={setAuthenticated} setShowLogin={setShowLogin} setShowSignUp={setShowSignUp} />
         <Switch>
           <ProtectedRoute
             path="/users"

@@ -108,6 +108,11 @@ const SignUpModal = (props) => {
 
   const { authenticated, setAuthenticated } = props
 
+  const switchToLogin = () => {
+    props.setShowSignUp(false);
+    props.setShowLogin(true);
+  };
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
@@ -205,6 +210,7 @@ const SignUpModal = (props) => {
           </div>
           <div>
             <Button type="submit">Sign Up</Button>
+            <Button onClick={switchToLogin}>Switch to Log in</Button>
           </div>
 
         </form>
